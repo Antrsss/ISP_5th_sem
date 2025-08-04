@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\WEB_353502_ZGIRSKAYA.UI.props" />
+</Project>
