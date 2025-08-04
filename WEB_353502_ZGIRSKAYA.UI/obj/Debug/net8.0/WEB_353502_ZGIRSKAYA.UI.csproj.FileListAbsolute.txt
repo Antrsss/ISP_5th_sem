@@ -31,3 +31,4 @@ C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\ob
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.pdb
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.genruntimeconfig.cache
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\ref\WEB_353502_ZGIRSKAYA.UI.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.sourcelink.json

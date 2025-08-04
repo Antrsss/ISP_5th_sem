@@ -24,12 +24,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/Components/Cart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FydFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/_MenuPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/_UserInfoPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VySW5mb1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Shared/_ValidationScriptsPartial.cshtml]

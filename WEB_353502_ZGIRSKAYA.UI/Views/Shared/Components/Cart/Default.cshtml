@@ -1,0 +1,5 @@
+﻿@model CartViewModel
+
+<a class="navbar-text ms-auto" asp-controller="Cart" asp-action="Index">
+    @Model.TotalPrice <i class="fa-solid fa-cart-shopping"></i> (@Model.ItemsCount)
+</a>
