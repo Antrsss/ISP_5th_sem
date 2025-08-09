@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "V8H2ySRxYGMcYUztYP3Cis0s2D3X01WrIQQE+YfWtaQ=",
+  "Hash": "h3ZtcNLOU7+9h8XTxVDL0Zfx80QV6VnjemXgSEQf/tE=",
   "Source": "WEB_353502_ZGIRSKAYA.UI",
   "BasePath": "_content/WEB_353502_ZGIRSKAYA.UI",
   "Mode": "Default",
@@ -57,6 +57,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\colada.jpg",
+      "SourceId": "WEB_353502_ZGIRSKAYA.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\",
+      "BasePath": "_content/WEB_353502_ZGIRSKAYA.UI",
+      "RelativePath": "images/cocktails/colada#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "atnwu787qm",
+      "Integrity": "ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cocktails\\colada.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\grasshopper.jpg",
+      "SourceId": "WEB_353502_ZGIRSKAYA.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\",
+      "BasePath": "_content/WEB_353502_ZGIRSKAYA.UI",
+      "RelativePath": "images/cocktails/grasshopper#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lijlfjrijh",
+      "Integrity": "8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cocktails\\grasshopper.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\martini.jpg",
+      "SourceId": "WEB_353502_ZGIRSKAYA.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\",
+      "BasePath": "_content/WEB_353502_ZGIRSKAYA.UI",
+      "RelativePath": "images/cocktails/martini#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7x5p9wvxli",
+      "Integrity": "xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cocktails\\martini.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\mojito.jpg",
+      "SourceId": "WEB_353502_ZGIRSKAYA.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\",
+      "BasePath": "_content/WEB_353502_ZGIRSKAYA.UI",
+      "RelativePath": "images/cocktails/mojito#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8feiwhe7f0",
+      "Integrity": "hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cocktails\\mojito.jpg"
     },
     {
       "Identity": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\profile-image.png",
@@ -2321,6 +2405,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/colada.atnwu787qm.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\colada.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "atnwu787qm"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/colada.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/colada.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\colada.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/grasshopper.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\grasshopper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25606"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/grasshopper.lijlfjrijh.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\grasshopper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25606"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lijlfjrijh"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/grasshopper.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/martini.7x5p9wvxli.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\martini.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "124846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7x5p9wvxli"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/martini.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/martini.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\martini.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "124846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/mojito.8feiwhe7f0.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\mojito.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:57:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8feiwhe7f0"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/mojito.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/mojito.jpg",
+      "AssetFile": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\mojito.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:57:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU="
         }
       ]
     },

@@ -1,5 +1,9 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\cocktails\colada.jpg
+wwwroot\images\cocktails\grasshopper.jpg
+wwwroot\images\cocktails\martini.jpg
+wwwroot\images\cocktails\mojito.jpg
 wwwroot\images\profile-image.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

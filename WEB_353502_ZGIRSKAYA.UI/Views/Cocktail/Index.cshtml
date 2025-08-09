@@ -1,0 +1,129 @@
+﻿@model WEB_353502_ZGIRSKAYA.Domain.Models.ListModel<WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail>
+
+@{
+    ViewData["Title"] = "Cocktails Catalog";
+    var request = ViewContext.HttpContext.Request;
+    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+    var currentCategory = request.RouteValues["category"]?.ToString();
+
+    int prev = Model.CurrentPage == 1 ? 1 : Model.CurrentPage - 1;
+    int next = Model.CurrentPage == Model.TotalPages ? Model.TotalPages : Model.CurrentPage + 1;
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <!-- Блок выбора категории -->
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5>Categories</h5>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link @(string.IsNullOrEmpty(ViewData["currentCategory"]?.ToString()) ? "active" : "")"
+                               asp-controller="Cocktail"
+                               asp-route-category="@null"
+                               asp-route-pageNo="1">
+                                All cocktails
+                            </a>
+                        </li>
+                        @foreach (var category in ViewData["categories"] as IEnumerable<CocktailCategory>)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["currentCategory"]?.ToString() == category.Name ? "active" : "")"
+                                   asp-controller="Cocktail"
+                                   asp-route-category="@category.NormilisedName"
+                                   asp-route-pageNo="1">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col">
+                        <div class="card h-100">
+                            @if (!string.IsNullOrEmpty(item.PathToPicture))
+                            {
+                                <img src="@item.PathToPicture" class="card-img-top" alt="@item.Name" style="height: 200px; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <div class="card-img-top bg-secondary" style="height: 200px;"></div>
+                            }
+
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                <p class="card-text">@item.Description</p>
+                                <p class="text-muted">@item.Category?.Name</p>
+                            </div>
+
+                            <div class="card-footer bg-white">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0">@item.Price.ToString("C")</span>
+                                    <a href="@Url.Action("Add", "Cart", new {
+                                        id = item.Id,
+                                        returnUrl = Uri.EscapeDataString(returnUrl)
+                                    })"
+                                       class="btn btn-success btn-sm"
+                                       title="Add @item.Name to cart">
+                                        <i class="fas fa-cart-plus"></i> Add to cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Пагинация -->
+            @if (Model.TotalPages > 1)
+            {
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mt-4">
+
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link"
+                               asp-controller="Cocktail"
+                               asp-route-category="@currentCategory"
+                               asp-route-pageNo="@prev">
+                                Previous
+                            </a>
+                        </li>
+
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link"
+                                   asp-controller="Cocktail"
+                                   asp-route-category="@currentCategory"
+                                   asp-route-pageNo="@i">
+                                    @i
+                                </a>
+                            </li>
+                        }
+
+                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                            <a class="page-link"
+                               asp-controller="Cocktail"
+                               asp-route-category="@currentCategory"
+                               asp-route-pageNo="@next">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</div>

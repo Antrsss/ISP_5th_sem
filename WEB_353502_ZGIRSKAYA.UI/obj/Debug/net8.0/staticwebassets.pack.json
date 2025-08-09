@@ -9,6 +9,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\colada.jpg",
+      "PackagePath": "staticwebassets\\images\\cocktails\\colada.jpg"
+    },
+    {
+      "Id": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\grasshopper.jpg",
+      "PackagePath": "staticwebassets\\images\\cocktails\\grasshopper.jpg"
+    },
+    {
+      "Id": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\martini.jpg",
+      "PackagePath": "staticwebassets\\images\\cocktails\\martini.jpg"
+    },
+    {
+      "Id": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\cocktails\\mojito.jpg",
+      "PackagePath": "staticwebassets\\images\\cocktails\\mojito.jpg"
+    },
+    {
       "Id": "C:\\Users\\zgdas\\3rd course\\ИСП\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\wwwroot\\images\\profile-image.png",
       "PackagePath": "staticwebassets\\images\\profile-image.png"
     },

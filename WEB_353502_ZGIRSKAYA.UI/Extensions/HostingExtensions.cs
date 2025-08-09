@@ -1,0 +1,16 @@
+﻿using System.Runtime.CompilerServices;
+using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
+using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
+
+namespace WEB_353502_ZGIRSKAYA.UI.Extensions
+{
+    public static class HostingExtensions
+    {
+        public static void RegisterCustomServices(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddScoped<ICategoryService, 
+                MemoryCategoryService>();
+            builder.Services.AddScoped<ICocktailService, MemoryCocktailService>();
+        }
+    }
+}

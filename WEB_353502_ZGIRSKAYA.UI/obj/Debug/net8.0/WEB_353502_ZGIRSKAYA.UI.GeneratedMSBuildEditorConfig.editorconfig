@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WEB_353502_ZGIRSKAYA.UI
 build_property.RootNamespace = WEB_353502_ZGIRSKAYA.UI
@@ -19,6 +27,14 @@ build_property.MSBuildProjectDirectory = C:\Users\zgdas\3rd course\ИСП\WEB_35
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Cocktail/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29ja3RhaWxcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Cocktail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29ja3RhaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

@@ -1,0 +1,13 @@
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\bin\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.deps.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\bin\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\bin\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.pdb
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.AssemblyInfoInputs.cache
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.AssemblyInfo.cs
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.csproj.CoreCompileInputs.cache
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.sourcelink.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\refint\WEB_353502_ZGIRSKAYA.Domain.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.pdb
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\ref\WEB_353502_ZGIRSKAYA.Domain.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Domain\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.Domain.csproj.AssemblyReference.cache

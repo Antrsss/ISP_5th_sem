@@ -167,6 +167,334 @@
       ]
     },
     {
+      "Route": "images/cocktails/colada.atnwu787qm.jpg",
+      "AssetFile": "images/cocktails/colada.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:00 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "atnwu787qm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k="
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/colada.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/colada.jpg",
+      "AssetFile": "images/cocktails/colada.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:00 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ciU/qFvOPKH/JRw/Sexh92Ri6s3Xu7JEFi4bWg7Nk4k="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/grasshopper.jpg",
+      "AssetFile": "images/cocktails/grasshopper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25606"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/grasshopper.lijlfjrijh.jpg",
+      "AssetFile": "images/cocktails/grasshopper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25606"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:58:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lijlfjrijh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8943dryJEfj82OtHd6/vooxdKURau5tYEMUDKev5u4I="
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/grasshopper.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/martini.7x5p9wvxli.jpg",
+      "AssetFile": "images/cocktails/martini.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "124846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:56:48 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7x5p9wvxli"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY="
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/martini.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/martini.jpg",
+      "AssetFile": "images/cocktails/martini.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "124846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:56:48 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xbychYVevHyA6+2tUknztTmDyknF6JUIHGXN9rjnWzY="
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/mojito.8feiwhe7f0.jpg",
+      "AssetFile": "images/cocktails/mojito.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:57:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8feiwhe7f0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/cocktails/mojito.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/cocktails/mojito.jpg",
+      "AssetFile": "images/cocktails/mojito.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 08 Aug 2025 17:57:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL2rKASJauNkLWTiJpsvhKspTkCyX61KocXVGAFNLjU="
+        }
+      ]
+    },
+    {
       "Route": "images/profile-image.png",
       "AssetFile": "images/profile-image.png",
       "Selectors": [],

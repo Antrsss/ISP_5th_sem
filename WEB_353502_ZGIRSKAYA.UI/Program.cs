@@ -1,3 +1,7 @@
+using WEB_353502_ZGIRSKAYA.UI.Extensions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace WEB_353502_ZGIRSKAYA.UI
 {
     public class Program
@@ -5,9 +9,12 @@ namespace WEB_353502_ZGIRSKAYA.UI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<CocktailContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CocktailContext") ?? throw new InvalidOperationException("Connection string 'CocktailContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.RegisterCustomServices();
 
             var app = builder.Build();
 
