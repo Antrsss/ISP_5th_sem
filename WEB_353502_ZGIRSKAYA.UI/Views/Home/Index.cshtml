@@ -4,77 +4,67 @@
 @model SelectList
 
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <main class="container">
-        <h1>@ViewData["Title"]?.ToString()</h1>
-        <h2>Список</h2>
-        <ol type="A">
-            @{
-                var items = new List<string> { "элемент 1 списка", "элемент 2 списка" };
-                for (int i = 0; i < items.Count; i++)
-                {
-                    <li>@items[i]</li>
-                }
-            }
-           </ol>
-           <hr />
+<h1>@ViewData["Title"]?.ToString()</h1>
+<h2>Список</h2>
+<ol type="A">
+    @{
+        var items = new List<string> { "элемент 1 списка", "элемент 2 списка" };
+        for (int i = 0; i < items.Count; i++)
+        {
+            <li>@items[i]</li>
+        }
+    }
+</ol>
+<hr />
 
-           <h2>Форма</h2>
-           <form method="get">
+<h2>Форма</h2>
+<form method="get">
 
-               <fieldset class="row mb-3">
-                   <legend class="col-form-label col-sm-2 pt-0"></legend>
-                   <div class="col-sm-10">
-                       <div>
-                           <input type="checkbox" id="checkbox1" name="checkbox1">
-                           <label for="checkbox1">Чек-бокс 1</label>
-                       </div>
-                       <div>
-                           <input type="checkbox" id="checkbox2" name="checkbox2">
-                           <label for="checkbox2">Чек-бокс 2</label>
-                       </div>
-                   </div>
-               </fieldset>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0"></legend>
+        <div class="col-sm-10">
+            <div>
+                <input type="checkbox" id="checkbox1" name="checkbox1">
+                <label for="checkbox1">Чек-бокс 1</label>
+            </div>
+            <div>
+                <input type="checkbox" id="checkbox2" name="checkbox2">
+                <label for="checkbox2">Чек-бокс 2</label>
+            </div>
+        </div>
+    </fieldset>
 
-               <fieldset class="row mb-3">
-                   <legend class="col-form-label col-sm-2 pt-0"></legend>
-                   <div class="col-sm-10">
-                       <input type="radio" id="radio1" name="radioGroup">
-                       <label for="radio1">Радио-1</label>
-                       <input type="radio" id="radio2" name="radioGroup">
-                       <label for="radio2">Радио-2</label>
-                       <input type="radio" id="radio3" name="radioGroup">
-                       <label for="radio3">Радио-3</label>
-                   </div>
-               </fieldset>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0"></legend>
+        <div class="col-sm-10">
+            <input type="radio" id="radio1" name="radioGroup">
+            <label for="radio1">Радио-1</label>
+            <input type="radio" id="radio2" name="radioGroup">
+            <label for="radio2">Радио-2</label>
+            <input type="radio" id="radio3" name="radioGroup">
+            <label for="radio3">Радио-3</label>
+        </div>
+    </fieldset>
 
-               <div class="row mb-3">
-                   <label for="inputName" class="col-sm-2 col-form-label">Логин</label>
-                   <div class="col-sm-10">
-                       <input type="text" class="form-control" id="inputName" placeholder="Введите имя">
-                   </div>
-               </div>
-               <div class="row mb-3">
-                   <label for="inputPassword" class="col-sm-2 col-form-label">Пароль</label>
-                   <div class="col-sm-10">
-                       <input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
-                   </div>
-               </div>
+    <div class="row mb-3">
+        <label for="inputName" class="col-sm-2 col-form-label">Логин</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName" placeholder="Введите имя">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Пароль</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
+        </div>
+    </div>
 
-               <div class="row mb-3">
-                   <label for="selectDemo" class="col-sm-2 col-form-label">Выберите вариант</label>
-                   <div class="col-sm-10">
-                       <select class="form-select" id="selectDemo" name="selectedItem" asp-items="Model"></select>
-                   </div>
-               </div>
+    <div class="row mb-3">
+        <label for="selectDemo" class="col-sm-2 col-form-label">Выберите вариант</label>
+        <div class="col-sm-10">
+            <select class="form-select" id="selectDemo" name="selectedItem" asp-items="Model"></select>
+        </div>
+    </div>
 
-               <button type="submit" class="btn btn-primary">Отправить</button>
-            </form>
-        </main>
-    </body>
-</html>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

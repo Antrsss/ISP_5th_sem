@@ -14,7 +14,6 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(int id, string returnUrl)
         {
-            // 1. Получаем коктейль по ID
             var response = await _cocktailService.GetCocktailByIdAsync(id);
 
             if (!response.Successfull)
@@ -22,12 +21,8 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                 return NotFound();
             }
 
-            // 2. Добавляем в корзину (временная реализация)
-            // Здесь будет логика добавления в корзину
-            // Пока просто сохраняем в сессии
             HttpContext.Session.SetInt32($"cart_{id}", 1);
 
-            // 3. Возвращаемся на предыдущую страницу
             return LocalRedirect(returnUrl);
         }
     }
