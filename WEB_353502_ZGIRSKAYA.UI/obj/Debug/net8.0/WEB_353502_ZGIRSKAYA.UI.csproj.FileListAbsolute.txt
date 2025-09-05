@@ -19,12 +19,6 @@ C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\ob
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets\msbuild.WEB_353502_ZGIRSKAYA.UI.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets\msbuild.WEB_353502_ZGIRSKAYA.UI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets\msbuild.build.WEB_353502_ZGIRSKAYA.UI.props
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WEB_353502_ZGIRSKAYA.UI.props
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WEB_353502_ZGIRSKAYA.UI.props
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.dll
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\refint\WEB_353502_ZGIRSKAYA.UI.dll
@@ -32,3 +26,8 @@ C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\ob
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.genruntimeconfig.cache
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\ref\WEB_353502_ZGIRSKAYA.UI.dll
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\WEB_353502_ZGIRSKAYA.UI.sourcelink.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\obj\Debug\net8.0\staticwebassets.build.json.cache
