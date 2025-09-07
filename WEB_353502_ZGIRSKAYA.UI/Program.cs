@@ -1,6 +1,8 @@
-using WEB_353502_ZGIRSKAYA.UI.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using WEB_353502_ZGIRSKAYA.UI.Models;
+using WEB_353502_ZGIRSKAYA.UI.Services;
+using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
+using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI
 {
@@ -9,12 +11,33 @@ namespace WEB_353502_ZGIRSKAYA.UI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<CocktailContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CocktailContext") ?? throw new InvalidOperationException("Connection string 'CocktailContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.RegisterCustomServices();
+
+            // Получение UriData ПЕРЕД регистрацией сервисов
+            var uriData = builder.Configuration.GetSection("UriData").Get<UriData>() ?? new UriData
+            {
+                ApiUri = "https://localhost:7002/api/"
+            };
+            builder.Services.AddSingleton(uriData);
+
+            builder.Services.AddHttpClient<ICocktailService, ApiCocktailService>(opt =>
+                opt.BaseAddress = new Uri($"{uriData.ApiUri}Cocktail/")); // Cocktail вместо Cocktails
+
+            builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt =>
+                opt.BaseAddress = new Uri($"{uriData.ApiUri}Category/")); // Category вместо Categories
+
+            // CORS должен быть ДО других сервисов
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
 
             var app = builder.Build();
 
@@ -22,15 +45,17 @@ namespace WEB_353502_ZGIRSKAYA.UI
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+            else
+            {
+                // В разработке тоже используем CORS
+                app.UseCors("AllowAll");
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapControllerRoute(

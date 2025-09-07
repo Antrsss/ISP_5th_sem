@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WEB_353502_ZGIRSKAYA.API\\WEB_353502_ZGIRSKAYA.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

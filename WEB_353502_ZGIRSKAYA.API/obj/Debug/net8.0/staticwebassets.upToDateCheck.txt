@@ -1,0 +1,4 @@
+wwwroot\Images\colada.jpg
+wwwroot\Images\grasshopper.jpg
+wwwroot\Images\martini.jpg
+wwwroot\Images\mojito.jpg
