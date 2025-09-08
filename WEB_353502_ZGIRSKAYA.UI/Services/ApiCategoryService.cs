@@ -24,23 +24,33 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task<ResponseData<List<CocktailCategory>>> GetCategoryListAsync()
         {
-            var response = await _httpClient.GetAsync("");
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                try
-                {
-                    return await response.Content.ReadFromJsonAsync<ResponseData<List<CocktailCategory>>>(_serializerOptions);
-                }
-                catch (JsonException ex)
-                {
-                    _logger.LogError($"-----> Ошибка: {ex.Message}");
-                    return ResponseData<List<CocktailCategory>>.Error($"Ошибка: {ex.Message}");
-                }
-            }
+                var response = await _httpClient.GetAsync("");
 
-            _logger.LogError($"-----> Данные не получены от сервера. Error: {response.StatusCode}");
-            return ResponseData<List<CocktailCategory>>.Error($"Данные не получены от сервера. Error: {response.StatusCode}");
+                if (response.IsSuccessStatusCode)
+                {
+                    try
+                    {
+                        // API возвращает List<CocktailCategory>, а не ResponseData<List<CocktailCategory>>
+                        var categories = await response.Content.ReadFromJsonAsync<List<CocktailCategory>>(_serializerOptions);
+                        return ResponseData<List<CocktailCategory>>.Success(categories ?? new List<CocktailCategory>());
+                    }
+                    catch (JsonException ex)
+                    {
+                        _logger.LogError($"Ошибка десериализации: {ex.Message}");
+                        return ResponseData<List<CocktailCategory>>.Error($"Ошибка: {ex.Message}");
+                    }
+                }
+
+                _logger.LogError($"Данные не получены от сервера. Status: {response.StatusCode}");
+                return ResponseData<List<CocktailCategory>>.Error($"Данные не получены от сервера. Error: {response.StatusCode}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Ошибка подключения: {ex.Message}");
+                return ResponseData<List<CocktailCategory>>.Error($"Ошибка подключения: {ex.Message}");
+            }
         }
     }
 }

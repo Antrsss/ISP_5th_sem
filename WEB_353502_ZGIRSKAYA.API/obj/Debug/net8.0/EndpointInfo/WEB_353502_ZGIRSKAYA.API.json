@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Cocktail": {
+    "/api/Cocktail/{category}": {
       "get": {
         "tags": [
           "Cocktail"
@@ -14,7 +14,7 @@
         "parameters": [
           {
             "name": "category",
-            "in": "query",
+            "in": "path",
             "schema": {
               "type": "string"
             }
@@ -43,37 +43,9 @@
             "description": "OK"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Cocktail"
-        ],
-        "operationId": "CreateCocktail",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Cocktail"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Cocktail"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/Cocktail/id/{id}": {
+    "/api/Cocktail/{id}": {
       "get": {
         "tags": [
           "Cocktail"
@@ -105,9 +77,7 @@
             "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Cocktail/{id}": {
+      },
       "put": {
         "tags": [
           "Cocktail"
@@ -165,6 +135,49 @@
           },
           "404": {
             "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/Cocktail": {
+      "post": {
+        "tags": [
+          "Cocktail"
+        ],
+        "operationId": "CreateCocktail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cocktail"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cocktail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cocktail/upload": {
+      "post": {
+        "tags": [
+          "Cocktail"
+        ],
+        "operationId": "UploadImage",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

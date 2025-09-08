@@ -13,20 +13,13 @@ public static class CocktailEndpoints
         var group = routes.MapGroup("/api/Cocktail").WithTags(nameof(Cocktail));
 
         group.MapGet("/{category:alpha?}",
-                async (IMediator mediator, string? category, int pageNo = 1, int pageSize = 3) =>
-                {
-                    var response = await mediator.Send(new GetListOfCocktails(category, pageNo, pageSize));
-                    return response.Successfull ? Results.Ok(response) : Results.BadRequest(response);
-                })
-                .WithName("GetAllCocktails")
-                .WithOpenApi();
-
-       /* group.MapGet("/", async (AppDbContext db) =>
-        {
-            return await db.Cocktails.ToListAsync();
-        })
-        .WithName("GetAllCocktails")
-        .WithOpenApi();*/
+            async (IMediator mediator, string? category, int pageNo = 1, int pageSize = 3) =>
+            {
+                var response = await mediator.Send(new GetListOfCocktails(category, pageNo, pageSize));
+                return response.Successfull ? Results.Ok(response) : Results.BadRequest(response);
+            })
+            .WithName("GetAllCocktails")
+            .WithOpenApi();
 
         group.MapGet("/{id}", async Task<Results<Ok<Cocktail>, NotFound>> (int id, AppDbContext db) =>
         {
@@ -73,6 +66,42 @@ public static class CocktailEndpoints
             return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
         })
         .WithName("DeleteCocktail")
+        .WithOpenApi();
+
+        // Добавьте в CocktailEndpoints.cs
+        group.MapPost("/upload", async (HttpContext context) =>
+        {
+            try
+            {
+                var form = await context.Request.ReadFormAsync();
+                var file = form.Files["file"];
+
+                if (file == null || file.Length == 0)
+                    return Results.BadRequest("No file uploaded");
+
+                // Генерируем уникальное имя файла
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                var filePath = Path.Combine("wwwroot", "Images", fileName);
+
+                // Создаем папку если не существует
+                var directory = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                    Directory.CreateDirectory(directory);
+
+                // Сохраняем файл
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                return Results.Ok($"Images/{fileName}");
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem($"Error uploading file: {ex.Message}");
+            }
+        })
+        .WithName("UploadImage")
         .WithOpenApi();
     }
 }

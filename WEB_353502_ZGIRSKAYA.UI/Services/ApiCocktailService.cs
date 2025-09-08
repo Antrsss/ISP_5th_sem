@@ -27,28 +27,32 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
         public async Task<ResponseData<ListModel<Cocktail>>> GetCocktailListAsync(string? categoryNormalizedName, int pageNo = 1)
         {
             // подготовка URL запроса
-            var urlString = new StringBuilder($"{_httpClient.BaseAddress!.AbsoluteUri}");
+            var queryParams = new List<string>();
 
             // добавить категорию в маршрут
-            if (!string.IsNullOrEmpty(categoryNormalizedName))
-            {
-                urlString.Append($"{categoryNormalizedName}/");
-            }
+            var urlString = string.IsNullOrEmpty(categoryNormalizedName)
+                ? $"{_httpClient.BaseAddress!.AbsoluteUri}"
+                : $"{_httpClient.BaseAddress!.AbsoluteUri}{categoryNormalizedName}";
 
-            // добавить номер страницы в маршрут
+            // добавить параметры в query string
             if (pageNo > 1)
             {
-                urlString.Append($"page{pageNo}");
+                queryParams.Add($"pageNo={pageNo}");
             }
 
-            // добавить размер страницы в строку запроса
             if (!_pageSize.Equals("3"))
             {
-                urlString.Append(QueryString.Create("pageSize", _pageSize));
+                queryParams.Add($"pageSize={_pageSize}");
+            }
+
+            // добавить query string если есть параметры
+            if (queryParams.Any())
+            {
+                urlString += "?" + string.Join("&", queryParams);
             }
 
             // отправить запрос к API
-            var response = await _httpClient.GetAsync(new Uri(urlString.ToString()));
+            var response = await _httpClient.GetAsync(new Uri(urlString));
 
             if (response.IsSuccessStatusCode)
             {
@@ -170,23 +174,34 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
         {
             try
             {
-                // Генерируем уникальное имя файла
-                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}";
-                var filePath = Path.Combine("wwwroot", "Images", fileName);
+                // Используем MultipartFormDataContent для отправки файла
+                using var content = new MultipartFormDataContent();
+                using var fileStream = formFile.OpenReadStream();
+                var fileContent = new StreamContent(fileStream);
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(formFile.ContentType);
 
-                // Сохраняем файл
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                content.Add(fileContent, "file", formFile.FileName);
+
+                // Отправляем файл на API
+                var response = await _httpClient.PostAsync("upload", content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    await formFile.CopyToAsync(stream);
+                    var uploadedPath = await response.Content.ReadAsStringAsync();
+                    cocktail.PathToPicture = uploadedPath.Trim('"'); // Убираем кавычки если есть
+                    cocktail.MimeType = formFile.ContentType;
+                    _logger.LogInformation($"Изображение загружено: {cocktail.PathToPicture}");
                 }
-
-                cocktail.PathToPicture = $"Images/{fileName}";
-                cocktail.MimeType = formFile.ContentType;
+                else
+                {
+                    _logger.LogError($"Ошибка загрузки изображения: {response.StatusCode}");
+                    cocktail.PathToPicture = "Images/noimage.jpg"; // Fallback
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError($"-----> Ошибка при загрузке изображения: {ex.Message}");
-                throw;
+                _logger.LogError($"Ошибка при загрузке изображения: {ex.Message}");
+                cocktail.PathToPicture = "Images/noimage.jpg"; // Fallback
             }
         }
     }

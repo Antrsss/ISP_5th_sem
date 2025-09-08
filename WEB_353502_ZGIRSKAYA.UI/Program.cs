@@ -23,10 +23,11 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddSingleton(uriData);
 
             builder.Services.AddHttpClient<ICocktailService, ApiCocktailService>(opt =>
-                opt.BaseAddress = new Uri($"{uriData.ApiUri}Cocktail/")); // Cocktail вместо Cocktails
+                opt.BaseAddress = new Uri($"{uriData.ApiUri}Cocktail/"));
 
             builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt =>
-                opt.BaseAddress = new Uri($"{uriData.ApiUri}Category/")); // Category вместо Categories
+                opt.BaseAddress = new Uri($"{uriData.ApiUri}CocktailCategory/"));
+
 
             // CORS должен быть ДО других сервисов
             builder.Services.AddCors(options =>
