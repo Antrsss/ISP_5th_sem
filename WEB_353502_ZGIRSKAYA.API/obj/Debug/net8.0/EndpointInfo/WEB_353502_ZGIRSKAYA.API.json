@@ -169,19 +169,6 @@
         }
       }
     },
-    "/api/Cocktail/upload": {
-      "post": {
-        "tags": [
-          "Cocktail"
-        ],
-        "operationId": "UploadImage",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/CocktailCategories": {
       "get": {
         "tags": [

@@ -164,26 +164,6 @@
     "EndpointName": "DeleteCocktail"
   },
   {
-    "ContainingType": "WEB_353502_ZGIRSKAYA.API.EndPoints.CocktailEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapCocktailEndpoints\u003Eb__0_5",
-    "RelativePath": "api/Cocktail/upload",
-    "HttpMethod": "POST",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ],
-    "Tags": [
-      "Cocktail"
-    ],
-    "EndpointName": "UploadImage"
-  },
-  {
     "ContainingType": "WEB_353502_ZGIRSKAYA.API.Controllers.CocktailCategoriesController",
     "Method": "GetCocktailCategories",
     "RelativePath": "api/CocktailCategories",

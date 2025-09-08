@@ -14,7 +14,6 @@ namespace WEB_353502_ZGIRSKAYA.API
 
             // Add services to the container.
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -25,7 +24,7 @@ namespace WEB_353502_ZGIRSKAYA.API
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
-            // ДОБАВЬТЕ CORS
+            // CORS - ПРАВИЛЬНО
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -49,30 +48,29 @@ namespace WEB_353502_ZGIRSKAYA.API
             // ПРАВИЛЬНЫЙ ПОРЯДОК MIDDLEWARE:
             app.UseHttpsRedirection();
 
-            // ДОБАВЬТЕ CORS перед другими middleware
-            app.UseCors("AllowAll");
+            app.UseRouting(); // ? ДОЛЖНО БЫТЬ ПЕРВЫМ
 
-            // Настройка статических файлов
+            app.UseCors("AllowAll"); // ? ПОСЛЕ UseRouting()
+
+            // Настройка статических файлов с MIME types
+            var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            if (!Directory.Exists(wwwrootPath))
+            {
+                Directory.CreateDirectory(wwwrootPath);
+            }
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
                 RequestPath = "",
-                // ДОБАВЬТЕ ContentTypeProvider для правильных MIME types
-                ContentTypeProvider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider
+                ServeUnknownFileTypes = true, // Важно!
+                DefaultContentType = "image/jpeg",
+                OnPrepareResponse = ctx =>
                 {
-                    Mappings =
-                    {
-                        [".jpg"] = "image/jpeg",
-                        [".jpeg"] = "image/jpeg",
-                        [".png"] = "image/png",
-                        [".gif"] = "image/gif",
-                        [".webp"] = "image/webp"
-                    }
+                    Console.WriteLine($"Обслуживаю файл: {ctx.File.PhysicalPath}");
                 }
             });
-
-            app.UseRouting();
 
             app.UseAuthorization();
 

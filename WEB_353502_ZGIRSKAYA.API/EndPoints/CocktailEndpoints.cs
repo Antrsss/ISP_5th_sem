@@ -67,41 +67,5 @@ public static class CocktailEndpoints
         })
         .WithName("DeleteCocktail")
         .WithOpenApi();
-
-        // Добавьте в CocktailEndpoints.cs
-        group.MapPost("/upload", async (HttpContext context) =>
-        {
-            try
-            {
-                var form = await context.Request.ReadFormAsync();
-                var file = form.Files["file"];
-
-                if (file == null || file.Length == 0)
-                    return Results.BadRequest("No file uploaded");
-
-                // Генерируем уникальное имя файла
-                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                var filePath = Path.Combine("wwwroot", "Images", fileName);
-
-                // Создаем папку если не существует
-                var directory = Path.GetDirectoryName(filePath);
-                if (!Directory.Exists(directory))
-                    Directory.CreateDirectory(directory);
-
-                // Сохраняем файл
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                return Results.Ok($"Images/{fileName}");
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem($"Error uploading file: {ex.Message}");
-            }
-        })
-        .WithName("UploadImage")
-        .WithOpenApi();
     }
 }
