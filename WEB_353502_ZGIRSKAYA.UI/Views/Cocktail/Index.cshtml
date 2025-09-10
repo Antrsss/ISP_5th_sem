@@ -17,12 +17,11 @@
     <div class="row">
         <!-- Блок выбора категории -->
         <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5>Categories</h5>
-                </div>
-                <div class="card-body p-0">
-                    <ul class="nav flex-column">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cocktail categories
+                    </button>
+                    <ul class="dropdown-menu">
                         <li class="nav-item">
                             <a class="nav-link @(string.IsNullOrEmpty(currentCategory) ? "active" : "")"
                                asp-controller="Cocktail"
@@ -53,7 +52,6 @@
                         }
                     </ul>
                 </div>
-            </div>
         </div>
 
         <div class="col-md-9">
