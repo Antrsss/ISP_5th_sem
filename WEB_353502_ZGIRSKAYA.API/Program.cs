@@ -24,17 +24,6 @@ namespace WEB_353502_ZGIRSKAYA.API
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
-            // CORS - ПРАВИЛЬНО
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                });
-            });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,32 +34,11 @@ namespace WEB_353502_ZGIRSKAYA.API
                 await DbInitializer.SeedData(app);
             }
 
-            // ПРАВИЛЬНЫЙ ПОРЯДОК MIDDLEWARE:
             app.UseHttpsRedirection();
 
-            app.UseRouting(); // ? ДОЛЖНО БЫТЬ ПЕРВЫМ
+            app.UseRouting();
 
-            app.UseCors("AllowAll"); // ? ПОСЛЕ UseRouting()
-
-            // Настройка статических файлов с MIME types
-            var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-            if (!Directory.Exists(wwwrootPath))
-            {
-                Directory.CreateDirectory(wwwrootPath);
-            }
-
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-                RequestPath = "",
-                ServeUnknownFileTypes = true, // Важно!
-                DefaultContentType = "image/jpeg",
-                OnPrepareResponse = ctx =>
-                {
-                    Console.WriteLine($"Обслуживаю файл: {ctx.File.PhysicalPath}");
-                }
-            });
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
