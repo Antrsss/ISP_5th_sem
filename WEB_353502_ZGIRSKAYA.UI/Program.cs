@@ -28,6 +28,10 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt =>
                 opt.BaseAddress = new Uri($"{uriData.ApiUri}CocktailCategory/"));
 
+            builder.Services.AddRazorPages();
+
+            builder.Services.AddDbContext<TempDbContext>();
+
 
             // CORS должен быть ДО других сервисов
             builder.Services.AddCors(options =>
@@ -58,6 +62,7 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",

@@ -28,6 +28,38 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/Cocktails/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcQ29ja3RhaWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/Cocktails/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcQ29ja3RhaWxzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/Cocktails/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcQ29ja3RhaWxzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/Cocktails/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcQ29ja3RhaWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Areas/Admin/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zgdas/3rd course/ИСП/WEB_353502_ZGIRSKAYA/WEB_353502_ZGIRSKAYA.UI/Views/Cocktail/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29ja3RhaWxcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

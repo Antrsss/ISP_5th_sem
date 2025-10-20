@@ -1,0 +1,68 @@
+﻿@page "{id:int}"
+@model WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    // Layout из _ViewStart
+}
+
+<h1>Edit</h1>
+
+<h4>Cocktail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Cocktail.Id" />
+
+            <div class="mb-3">
+                <label asp-for="Cocktail.Name" class="form-label"></label>
+                <input asp-for="Cocktail.Name" class="form-control" />
+                <span asp-validation-for="Cocktail.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Cocktail.Description" class="form-label"></label>
+                <input asp-for="Cocktail.Description" class="form-control" />
+                <span asp-validation-for="Cocktail.Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Cocktail.Price" class="form-label"></label>
+                <input asp-for="Cocktail.Price" class="form-control" />
+                <span asp-validation-for="Cocktail.Price" class="text-danger"></span>
+            </div>
+
+            <!-- Текущее изображение (preview) -->
+            @if (!string.IsNullOrEmpty(Model.Cocktail?.PathToPicture))
+            {
+                <div class="mb-3">
+                    <label class="form-label">Текущее изображение</label>
+                    <div>
+                        <img src="@Model.Cocktail.PathToPicture" alt="Preview" class="img-thumbnail" style="max-width:200px;" />
+                    </div>
+                </div>
+            }
+
+            <!-- Поле для замены изображения -->
+            <div class="mb-3">
+                <label class="form-label">Заменить изображение</label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary ms-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
