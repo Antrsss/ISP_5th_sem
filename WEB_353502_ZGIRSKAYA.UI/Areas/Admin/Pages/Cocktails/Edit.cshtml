@@ -1,9 +1,8 @@
-﻿@page "{id:int}"
+﻿@page
 @model WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails.EditModel
 
 @{
     ViewData["Title"] = "Edit";
-    // Layout из _ViewStart
 }
 
 <h1>Edit</h1>
@@ -25,44 +24,57 @@
 
             <div class="mb-3">
                 <label asp-for="Cocktail.Description" class="form-label"></label>
-                <input asp-for="Cocktail.Description" class="form-control" />
+                <textarea asp-for="Cocktail.Description" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Cocktail.Description" class="text-danger"></span>
+            </div>
+
+            <!-- Добавляем выбор категории -->
+            <div class="mb-3">
+                <label asp-for="SelectedCategoryId" class="form-label">Category</label>
+                <select asp-for="SelectedCategoryId" class="form-control">
+                    <option value="">-- Select Category --</option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="SelectedCategoryId" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Cocktail.Price" class="form-label"></label>
-                <input asp-for="Cocktail.Price" class="form-control" />
+                <input asp-for="Cocktail.Price" class="form-control" type="number" step="0.01" />
                 <span asp-validation-for="Cocktail.Price" class="text-danger"></span>
             </div>
 
-            <!-- Текущее изображение (preview) -->
-            @if (!string.IsNullOrEmpty(Model.Cocktail?.PathToPicture))
+            <!-- Текущее изображение -->
+            @if (!string.IsNullOrEmpty(Model.Cocktail.PathToPicture) && Model.Cocktail.PathToPicture != "images/noimage.jpg")
             {
                 <div class="mb-3">
                     <label class="form-label">Текущее изображение</label>
                     <div>
-                        <img src="@Model.Cocktail.PathToPicture" alt="Preview" class="img-thumbnail" style="max-width:200px;" />
+                        <img src="@Model.Cocktail.PathToPicture" alt="Current image" class="img-thumbnail" style="max-height: 200px;" />
+                        <div class="form-text">Текущее изображение коктейля</div>
                     </div>
                 </div>
             }
 
-            <!-- Поле для замены изображения -->
+            <!-- Поле для загрузки нового изображения -->
             <div class="mb-3">
-                <label class="form-label">Заменить изображение</label>
-                <input asp-for="Image" type="file" class="form-control" />
+                <label asp-for="Image" class="form-label">Заменить изображение</label>
+                <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                <div class="form-text">Выберите новое изображение для коктейля (оставьте пустым, чтобы сохранить текущее)</div>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-page="./Index" class="btn btn-secondary ms-2">Back to List</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Save
+                </button>
+                <a asp-page="./Index" class="btn btn-secondary ms-2">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
             </div>
         </form>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

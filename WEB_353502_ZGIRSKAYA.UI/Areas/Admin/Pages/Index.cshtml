@@ -1,98 +1,20 @@
 ﻿@page
-@model WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails.IndexModel
+@model WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.IndexModel
 
 @{
-    ViewData["Title"] = "Cocktails (Admin)";
+    ViewData["Title"] = "Admin Panel";
 }
 
-<h1 class="mb-4">Cocktails (Admin)</h1>
+<h1>Admin Panel</h1>
 
-<p>
-    <a asp-page="./Create" class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> Create New
-    </a>
-</p>
-
-@if (Model.CocktailsModel?.Items == null || !Model.CocktailsModel.Items.Any())
-{
-    <div class="alert alert-info">No cocktails found.</div>
-}
-else
-{
-    <table class="table table-bordered table-striped align-middle">
-        <thead class="table-light">
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.CocktailsModel.Items)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.Price.ToString("0.00")</td>
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.PathToPicture))
-                        {
-                            <img src="@item.PathToPicture" alt="@item.Name" width="100" height="80"
-                                 style="object-fit:cover; border-radius:8px;" />
-                        }
-                        else
-                        {
-                            <span class="text-muted">no image</span>
-                        }
-                    </td>
-                    <td class="text-end">
-                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">
-                            <i class="bi bi-info-circle"></i>
-                        </a>
-                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <!-- Пагинация -->
-    @if (Model.CocktailsModel.TotalPages > 1)
-    {
-        <nav aria-label="Page navigation" class="mt-4">
-            <ul class="pagination justify-content-center">
-                <li class="page-item @(Model.CocktailsModel.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link"
-                       asp-page="./Index"
-                       asp-route-pageNo="@(Model.CocktailsModel.CurrentPage - 1)"
-                       aria-label="Previous">
-                        <span class="bi bi-chevron-left" aria-hidden="true"></span>
-                    </a>
-                </li>
-
-                @for (int i = 1; i <= Model.CocktailsModel.TotalPages; i++)
-                {
-                    <li class="page-item @(i == Model.CocktailsModel.CurrentPage ? "active" : "")">
-                        <a class="page-link" asp-page="./Index" asp-route-pageNo="@i">@i</a>
-                    </li>
-                }
-
-                <li class="page-item @(Model.CocktailsModel.CurrentPage == Model.CocktailsModel.TotalPages ? "disabled" : "")">
-                    <a class="page-link"
-                       asp-page="./Index"
-                       asp-route-pageNo="@(Model.CocktailsModel.CurrentPage + 1)"
-                       aria-label="Next">
-                        <span class="bi bi-chevron-right" aria-hidden="true"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    }
-}
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cocktails Management</h5>
+                <p class="card-text">Manage your cocktail recipes, images, and prices.</p>
+                <a asp-page="/Cocktails/Index" class="btn btn-primary">Go to Cocktails</a>
+            </div>
+        </div>
+    </div>
+</div>

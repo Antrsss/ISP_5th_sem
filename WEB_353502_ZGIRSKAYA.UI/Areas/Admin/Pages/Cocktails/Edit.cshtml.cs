@@ -4,16 +4,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 using Microsoft.AspNetCore.Http;
+using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
+using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
 {
     public class EditModel : PageModel
     {
         private readonly ICocktailService _cocktailService;
+        private readonly ICategoryService _categoryService;
+        private readonly ILogger<EditModel> _logger;
 
-        public EditModel(ICocktailService cocktailService)
+        public EditModel(ICocktailService cocktailService, ICategoryService categoryService, ILogger<EditModel> logger)
         {
             _cocktailService = cocktailService;
+            _categoryService = categoryService;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -22,11 +29,21 @@ namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
         [BindProperty]
         public IFormFile? Image { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null) return NotFound();
+        public List<CocktailCategory> Categories { get; set; } = new();
 
-            var resp = await _cocktailService.GetCocktailByIdAsync(id.Value);
+        [BindProperty]
+        public int SelectedCategoryId { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            // Загружаем категории
+            var categoriesResponse = await _categoryService.GetCategoryListAsync();
+            if (categoriesResponse.Successfull)
+            {
+                Categories = categoriesResponse.Data ?? new List<CocktailCategory>();
+            }
+
+            var resp = await _cocktailService.GetCocktailByIdAsync(id);
             if (!resp.Successfull || resp.Data == null)
             {
                 TempData["Error"] = resp.ErrorMessage ?? "Коктейль не найден";
@@ -34,12 +51,26 @@ namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
             }
 
             Cocktail = resp.Data;
+
+            // Устанавливаем выбранную категорию
+            if (Cocktail.Category != null)
+            {
+                SelectedCategoryId = Cocktail.Category.Id;
+            }
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null) return NotFound();
+            // Загружаем категории и находим выбранную
+            var categoriesResponse = await _categoryService.GetCategoryListAsync();
+            if (categoriesResponse.Successfull)
+            {
+                Categories = categoriesResponse.Data ?? new List<CocktailCategory>();
+                Cocktail.Category = Categories.FirstOrDefault(c => c.Id == SelectedCategoryId);
+                _logger.LogInformation($"Selected category for update: {Cocktail.Category?.Name} (ID: {SelectedCategoryId})");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -48,7 +79,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
 
             try
             {
-                await _cocktailService.UpdateCocktailAsync(id.Value, Cocktail, Image);
+                await _cocktailService.UpdateCocktailAsync(Cocktail.Id, Cocktail, Image);
                 TempData["Success"] = "Коктейль успешно обновлён";
                 return RedirectToPage("./Index");
             }

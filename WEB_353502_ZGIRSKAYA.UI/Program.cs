@@ -32,7 +32,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
 
             builder.Services.AddDbContext<TempDbContext>();
 
-
             // CORS должен быть ДО других сервисов
             builder.Services.AddCors(options =>
             {
@@ -54,7 +53,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
             }
             else
             {
-                // В разработке тоже используем CORS
                 app.UseCors("AllowAll");
             }
 
@@ -62,7 +60,14 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+
+            // Важно: MapRazorPages должно быть до MapControllerRoute
             app.MapRazorPages();
+
+            // Добавьте явный маршрут для Areas
+            app.MapControllerRoute(
+                name: "area",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

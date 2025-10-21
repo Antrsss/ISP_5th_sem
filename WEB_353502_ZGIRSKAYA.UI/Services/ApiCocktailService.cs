@@ -19,7 +19,9 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
             _pageSize = configuration.GetValue<string>("ItemsPerPage") ?? "3";
             _serializerOptions = new JsonSerializerOptions()
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                // Добавляем настройки чтобы избежать циклических ссылок
+                ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles
             };
             _logger = logger;
         }
@@ -94,69 +96,147 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task<ResponseData<Cocktail>> CreateCocktailAsync(Cocktail cocktail, IFormFile? formFile)
         {
-            try
+            _logger.LogInformation($"=== CREATE COCKTAIL SERVICE ===");
+            _logger.LogInformation($"Name: '{cocktail.Name}'");
+            _logger.LogInformation($"Description: '{cocktail.Description}'");
+            _logger.LogInformation($"Price: {cocktail.Price}");
+            _logger.LogInformation($"Category: {cocktail.Category?.Name} (Id: {cocktail.Category?.Id})");
+
+            cocktail.PathToPicture = "images/noimage.jpg";
+
+            var request = new HttpRequestMessage
             {
-                // Если есть файл изображения, загружаем его
-                if (formFile != null)
-                {
-                    await UploadImageAsync(cocktail, formFile);
-                }
-                else
-                {
-                    cocktail.PathToPicture = "Images/noimage.jpg";
-                }
+                Method = HttpMethod.Post,
+                RequestUri = _httpClient.BaseAddress
+            };
 
-                var content = new StringContent(JsonSerializer.Serialize(cocktail, _serializerOptions), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("", content);
+            var content = new MultipartFormDataContent();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    try
-                    {
-                        var responseData = await response.Content.ReadFromJsonAsync<ResponseData<Cocktail>>(_serializerOptions);
-                        return responseData;
-                    }
-                    catch (JsonException ex)
-                    {
-                        _logger.LogError($"-----> Ошибка: {ex.Message}");
-                        return ResponseData<Cocktail>.Error($"Ошибка: {ex.Message}");
-                    }
-                }
-
-                _logger.LogError($"-----> Объект не создан. Error: {response.StatusCode}");
-                return ResponseData<Cocktail>.Error($"Объект не создан. Error: {response.StatusCode}");
-            }
-            catch (Exception ex)
+            // Добавить файл изображения
+            if (formFile != null)
             {
-                _logger.LogError($"-----> Ошибка при создании коктейля: {ex.Message}");
-                return ResponseData<Cocktail>.Error($"Ошибка при создании коктейля: {ex.Message}");
+                _logger.LogInformation($"Image file: {formFile.FileName}, Size: {formFile.Length}");
+                var streamContent = new StreamContent(formFile.OpenReadStream());
+                content.Add(streamContent, "file", formFile.FileName);
             }
+
+            // Создаем объект для сериализации без циклических ссылок
+            var cocktailForSerialization = new
+            {
+                id = cocktail.Id,
+                name = cocktail.Name,
+                description = cocktail.Description,
+                price = cocktail.Price,
+                category = cocktail.Category, // Отправляем всю категорию
+                pathToPicture = cocktail.PathToPicture,
+                mimeType = cocktail.MimeType
+            };
+
+            // Сериализуем объект cocktail
+            var cocktailJson = JsonSerializer.Serialize(cocktailForSerialization, _serializerOptions);
+            _logger.LogInformation($"Serialized cocktail: {cocktailJson}");
+
+            var cocktailContent = new StringContent(cocktailJson, Encoding.UTF8, "application/json");
+            content.Add(cocktailContent, "cocktail");
+
+            request.Content = content;
+
+            _logger.LogInformation("Sending request to API...");
+            var response = await _httpClient.SendAsync(request, CancellationToken.None);
+
+            _logger.LogInformation($"Response status: {response.StatusCode}");
+
+            // ВАЖНО: Добавляем логирование сырого ответа
+            var responseContentString = await response.Content.ReadAsStringAsync();
+            _logger.LogInformation($"=== RAW RESPONSE ===");
+            _logger.LogInformation($"Response content: {responseContentString}");
+            _logger.LogInformation($"=== END RAW RESPONSE ===");
+
+            if (response.IsSuccessStatusCode)
+            {
+                try
+                {
+                    var responseData = JsonSerializer.Deserialize<ResponseData<Cocktail>>(responseContentString, _serializerOptions);
+
+                    _logger.LogInformation($"Deserialized response - Success: {responseData?.Successfull}");
+                    _logger.LogInformation($"Deserialized cocktail Name: '{responseData?.Data?.Name}'");
+                    _logger.LogInformation($"Deserialized cocktail Description: '{responseData?.Data?.Description}'");
+                    _logger.LogInformation($"Deserialized cocktail Price: {responseData?.Data?.Price}");
+                    _logger.LogInformation($"Deserialized cocktail Category: {responseData?.Data?.Category?.Name}");
+
+                    return responseData ?? ResponseData<Cocktail>.Error("Пустой ответ от сервера");
+                }
+                catch (JsonException ex)
+                {
+                    _logger.LogError($"Ошибка десериализации: {ex.Message}");
+                    _logger.LogError($"Stack trace: {ex.StackTrace}");
+                    return ResponseData<Cocktail>.Error($"Ошибка десериализации: {ex.Message}");
+                }
+            }
+
+            _logger.LogError($"Object not created. Error: {response.StatusCode}");
+            return ResponseData<Cocktail>.Error($"Объект не добавлен. Error: {response.StatusCode}");
         }
 
         public async Task UpdateCocktailAsync(int id, Cocktail cocktail, IFormFile? formFile)
         {
-            try
-            {
-                // Если есть файл изображения, загружаем его
-                if (formFile != null)
-                {
-                    await UploadImageAsync(cocktail, formFile);
-                }
+            _logger.LogInformation($"=== UPDATE COCKTAIL SERVICE ===");
+            _logger.LogInformation($"Updating cocktail ID: {id}");
+            _logger.LogInformation($"Name: '{cocktail.Name}'");
+            _logger.LogInformation($"Description: '{cocktail.Description}'");
+            _logger.LogInformation($"Price: {cocktail.Price}");
+            _logger.LogInformation($"Category: {cocktail.Category?.Name} (Id: {cocktail.Category?.Id})");
 
-                var content = new StringContent(JsonSerializer.Serialize(cocktail, _serializerOptions), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PutAsync($"{id}", content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    _logger.LogError($"-----> Объект не обновлен. Error: {response.StatusCode}");
-                    throw new Exception($"Объект не обновлен. Error: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
+            var request = new HttpRequestMessage
             {
-                _logger.LogError($"-----> Ошибка при обновлении коктейля: {ex.Message}");
-                throw;
+                Method = HttpMethod.Put,
+                RequestUri = new Uri(_httpClient.BaseAddress!, $"{id}")
+            };
+
+            var content = new MultipartFormDataContent();
+
+            // Добавить файл изображения
+            if (formFile != null)
+            {
+                _logger.LogInformation($"Image file: {formFile.FileName}, Size: {formFile.Length}");
+                var streamContent = new StreamContent(formFile.OpenReadStream());
+                streamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(formFile.ContentType);
+                content.Add(streamContent, "file", formFile.FileName);
             }
+
+            // Создаем объект для сериализации без циклических ссылок
+            var cocktailForSerialization = new
+            {
+                id = cocktail.Id,
+                name = cocktail.Name,
+                description = cocktail.Description,
+                price = cocktail.Price,
+                category = cocktail.Category, // Отправляем всю категорию
+                pathToPicture = cocktail.PathToPicture,
+                mimeType = cocktail.MimeType
+            };
+
+            // Добавить объект cocktail
+            var cocktailJson = JsonSerializer.Serialize(cocktailForSerialization, _serializerOptions);
+            _logger.LogInformation($"Serialized cocktail for update: {cocktailJson}");
+
+            var cocktailContent = new StringContent(cocktailJson, Encoding.UTF8, "application/json");
+            content.Add(cocktailContent, "cocktail");
+
+            request.Content = content;
+
+            _logger.LogInformation("Sending update request to API...");
+            var response = await _httpClient.SendAsync(request, CancellationToken.None);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogError($"-----> Объект не обновлен. Error: {response.StatusCode}");
+                throw new Exception($"Объект не обновлен. Error: {response.StatusCode}");
+            }
+
+            // Можно прочитать ответ если нужно
+            var responseContent = await response.Content.ReadAsStringAsync();
+            _logger.LogInformation($"Update response: {responseContent}");
         }
 
         public async Task DeleteCocktailAsync(int id)
@@ -167,41 +247,6 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
             {
                 _logger.LogError($"-----> Объект не удален. Error: {response.StatusCode}");
                 throw new Exception($"Объект не удален. Error: {response.StatusCode}");
-            }
-        }
-
-        private async Task UploadImageAsync(Cocktail cocktail, IFormFile formFile)
-        {
-            try
-            {
-                // Используем MultipartFormDataContent для отправки файла
-                using var content = new MultipartFormDataContent();
-                using var fileStream = formFile.OpenReadStream();
-                var fileContent = new StreamContent(fileStream);
-                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(formFile.ContentType);
-
-                content.Add(fileContent, "file", formFile.FileName);
-
-                // Отправляем файл на API
-                var response = await _httpClient.PostAsync("upload", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var uploadedPath = await response.Content.ReadAsStringAsync();
-                    cocktail.PathToPicture = uploadedPath.Trim('"'); // Убираем кавычки если есть
-                    cocktail.MimeType = formFile.ContentType;
-                    _logger.LogInformation($"Изображение загружено: {cocktail.PathToPicture}");
-                }
-                else
-                {
-                    _logger.LogError($"Ошибка загрузки изображения: {response.StatusCode}");
-                    cocktail.PathToPicture = "Images/noimage.jpg"; // Fallback
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Ошибка при загрузке изображения: {ex.Message}");
-                cocktail.PathToPicture = "Images/noimage.jpg"; // Fallback
             }
         }
     }

@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "WEB_353502_ZGIRSKAYA.API.EndPoints.CocktailEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapCocktailEndpoints\u003Eb__0_3",
+    "Method": "\u003CMapCocktailEndpoints\u003Eb__0_2",
     "RelativePath": "api/Cocktail/",
     "HttpMethod": "POST",
     "IsController": false,
@@ -9,17 +9,20 @@
     "Parameters": [
       {
         "Name": "cocktail",
-        "Type": "WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail",
+        "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail",
-        "MediaTypes": [
-          "application/json"
-        ],
-        "StatusCode": 201
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
       }
     ],
     "Tags": [
@@ -79,7 +82,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail",
+        "Type": "WEB_353502_ZGIRSKAYA.Domain.Models.ResponseData\u00601[[WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail, WEB_353502_ZGIRSKAYA.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],
@@ -98,7 +101,7 @@
   },
   {
     "ContainingType": "WEB_353502_ZGIRSKAYA.API.EndPoints.CocktailEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapCocktailEndpoints\u003Eb__0_2",
+    "Method": "\u003CMapCocktailEndpoints\u003Eb__0_3",
     "RelativePath": "api/Cocktail/{id}",
     "HttpMethod": "PUT",
     "IsController": false,
@@ -111,20 +114,34 @@
       },
       {
         "Name": "cocktail",
-        "Type": "WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail",
+        "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "WEB_353502_ZGIRSKAYA.Domain.Models.ResponseData\u00601[[WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail, WEB_353502_ZGIRSKAYA.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
         "StatusCode": 200
       },
       {
         "Type": "System.Void",
         "MediaTypes": [],
         "StatusCode": 404
+      },
+      {
+        "Type": "WEB_353502_ZGIRSKAYA.Domain.Models.ResponseData\u00601[[WEB_353502_ZGIRSKAYA.Domain.Entities.Cocktail, WEB_353502_ZGIRSKAYA.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
       }
     ],
     "Tags": [
@@ -148,8 +165,10 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "WEB_353502_ZGIRSKAYA.Domain.Models.ResponseData\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "application/json"
+        ],
         "StatusCode": 200
       },
       {
