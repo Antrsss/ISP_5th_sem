@@ -298,3 +298,7 @@ C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\b
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

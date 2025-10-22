@@ -16,7 +16,8 @@ public static class CocktailEndpoints
     {
         var group = routes.MapGroup("/api/Cocktail")
             .WithTags(nameof(Cocktail))
-            .DisableAntiforgery();
+            .DisableAntiforgery()
+            .RequireAuthorization("admin");
 
         group.MapGet("/{category:alpha?}",
             async (IMediator mediator, string? category, int pageNo = 1, int pageSize = 3) =>
@@ -25,7 +26,8 @@ public static class CocktailEndpoints
                 return response.Successfull ? Results.Ok(response) : Results.BadRequest(response);
             })
             .WithName("GetAllCocktails")
-            .WithOpenApi();
+            .WithOpenApi()
+            .AllowAnonymous();
 
         group.MapGet("/{id}", async Task<Results<Ok<ResponseData<Cocktail>>, NotFound>> (int id, AppDbContext db) =>
         {
@@ -37,7 +39,8 @@ public static class CocktailEndpoints
                 : TypedResults.NotFound();
         })
         .WithName("GetCocktailById")
-        .WithOpenApi();
+        .WithOpenApi()
+        .AllowAnonymous();
 
         group.MapPost("/", async (
             [FromForm] string cocktail,
