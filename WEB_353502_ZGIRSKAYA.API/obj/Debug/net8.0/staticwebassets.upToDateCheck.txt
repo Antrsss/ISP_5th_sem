@@ -10,10 +10,12 @@ wwwroot\Images\9b50ff71-95bf-481a-834d-06efa09709ca.jpg
 wwwroot\Images\9b873274-a41f-4188-a3d2-52701e497999.jpg
 wwwroot\Images\bd0b57cb-0f19-4381-8d7c-a92ea28ddfae.jpg
 wwwroot\Images\bf06a80c-e469-4a7e-bbd6-7f52f6e6c42b.jpg
+wwwroot\Images\c48671f5-ee3a-4b55-9828-a32a869905eb.jpg
 wwwroot\Images\c5c387f3-fae6-40bb-97e6-add25e0f5a5a.jpg
 wwwroot\Images\colada.jpg
 wwwroot\Images\d8d7c29e-06ec-4409-aac7-634986012d23.jpg
 wwwroot\Images\f81a2312-5ef0-41fc-b842-182e83e2931f.jpg
+wwwroot\Images\fc0124a8-dad5-44a1-80e7-e11b81b63720.jpg
 wwwroot\Images\fdf13a46-db4c-45b6-b0ea-c5b7ee479f6f.jpg
 wwwroot\Images\grasshopper.jpg
 wwwroot\Images\martini.jpg

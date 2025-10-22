@@ -43,54 +43,48 @@ public static class CocktailEndpoints
             [FromForm] string cocktail,
             [FromForm] IFormFile? file,
             AppDbContext db,
-            IMediator mediator,
-            ILogger<Program> logger) =>
+            IMediator mediator) =>
         {
             try
             {
-                logger.LogInformation("=== BACKEND: START CREATE COCKTAIL ===");
-                logger.LogInformation($"Received cocktail JSON: {cocktail}");
-
-                // Настройки для десериализации
                 var options = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     PropertyNameCaseInsensitive = true
                 };
 
-                // Десериализуем JSON
                 var newCocktail = JsonSerializer.Deserialize<Cocktail>(cocktail, options);
 
                 if (newCocktail == null)
                 {
-                    logger.LogError("Failed to deserialize cocktail");
                     return Results.BadRequest(ResponseData<Cocktail>.Error("Invalid cocktail data"));
                 }
 
-                logger.LogInformation($"Deserialized cocktail - Name: '{newCocktail.Name}', Description: '{newCocktail.Description}', Price: {newCocktail.Price}");
-
-                // Проверяем, что данные не пустые
                 if (string.IsNullOrEmpty(newCocktail.Name) || string.IsNullOrEmpty(newCocktail.Description) || newCocktail.Price <= 0)
                 {
-                    logger.LogError($"Invalid data after deserialization - Name: '{newCocktail.Name}', Description: '{newCocktail.Description}', Price: {newCocktail.Price}");
                     return Results.BadRequest(ResponseData<Cocktail>.Error("Invalid data after deserialization"));
                 }
 
-                // Создаем НОВЫЙ объект в контексте EF
                 var cocktailToAdd = new Cocktail
                 {
                     Name = newCocktail.Name,
                     Description = newCocktail.Description,
-                    Price = newCocktail.Price,
-                    Category = newCocktail.Category
+                    Price = newCocktail.Price
                 };
 
-                logger.LogInformation($"Cocktail to add - Name: '{cocktailToAdd.Name}', Description: '{cocktailToAdd.Description}', Price: {cocktailToAdd.Price}");
+                if (newCocktail.Category != null && newCocktail.Category.Id > 0)
+                {
+                    var categoryFromDb = await db.CocktailCategories
+                        .FirstOrDefaultAsync(c => c.Id == newCocktail.Category.Id);
 
-                // Обрабатываем изображение
+                    if (categoryFromDb != null)
+                    {
+                        cocktailToAdd.Category = categoryFromDb;
+                    }
+                }
+
                 if (file != null)
                 {
-                    logger.LogInformation($"Processing image file: {file.FileName}");
                     var imageUrl = await mediator.Send(new SaveImage(file));
                     cocktailToAdd.PathToPicture = imageUrl;
                     cocktailToAdd.MimeType = file.ContentType;
@@ -101,126 +95,97 @@ public static class CocktailEndpoints
                     cocktailToAdd.MimeType = "image/jpeg";
                 }
 
-                logger.LogInformation($"Before save - Name: '{cocktailToAdd.Name}', Description: '{cocktailToAdd.Description}', Price: {cocktailToAdd.Price}");
-
-                // Добавляем и сохраняем
                 db.Cocktails.Add(cocktailToAdd);
                 await db.SaveChangesAsync();
 
-                logger.LogInformation($"After save - Name: '{cocktailToAdd.Name}', Description: '{cocktailToAdd.Description}', Price: {cocktailToAdd.Price}");
-
-                // Возвращаем созданный объект
                 var response = ResponseData<Cocktail>.Success(cocktailToAdd);
-                logger.LogInformation($"Returning response - Name: '{response.Data?.Name}', Description: '{response.Data?.Description}', Price: {response.Data?.Price}");
-
+                
                 return Results.Created($"/api/Cocktail/{cocktailToAdd.Id}", response);
             }
             catch (JsonException ex)
             {
-                logger.LogError($"JSON deserialization error: {ex.Message}");
-                logger.LogError($"Stack trace: {ex.StackTrace}");
                 return Results.BadRequest(ResponseData<Cocktail>.Error($"JSON deserialization error: {ex.Message}"));
             }
             catch (Exception ex)
             {
-                logger.LogError($"Error creating cocktail: {ex.Message}");
-                logger.LogError($"Stack trace: {ex.StackTrace}");
                 return Results.BadRequest(ResponseData<Cocktail>.Error($"Error creating cocktail: {ex.Message}"));
             }
         })
         .WithName("CreateCocktail")
         .WithOpenApi();
 
-        // MapPut ДЛЯ ОБНОВЛЕНИЯ КОКТЕЙЛЯ
         group.MapPut("/{id}", async Task<Results<Ok<ResponseData<Cocktail>>, NotFound, BadRequest<ResponseData<Cocktail>>>> (
             int id,
             [FromForm] string cocktail,
             [FromForm] IFormFile? file,
             AppDbContext db,
-            IMediator mediator,
-            ILogger<Program> logger) =>
+            IMediator mediator) =>
         {
             try
             {
-                logger.LogInformation("=== BACKEND: START UPDATE COCKTAIL ===");
-                logger.LogInformation($"Updating cocktail ID: {id}");
-                logger.LogInformation($"Received cocktail JSON: {cocktail}");
-
                 var existingCocktail = await db.Cocktails
+                    .Include(c => c.Category)
                     .FirstOrDefaultAsync(model => model.Id == id);
 
                 if (existingCocktail == null)
                 {
-                    logger.LogWarning($"Cocktail with ID {id} not found");
                     return TypedResults.NotFound();
                 }
 
-                // Настройки для десериализации (такие же как в Create)
                 var options = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     PropertyNameCaseInsensitive = true
                 };
 
-                // Десериализуем JSON
                 var updatedData = JsonSerializer.Deserialize<Cocktail>(cocktail, options);
 
                 if (updatedData == null)
                 {
-                    logger.LogError("Failed to deserialize cocktail data for update");
                     return TypedResults.BadRequest(ResponseData<Cocktail>.Error("Invalid cocktail data"));
                 }
 
-                logger.LogInformation($"Deserialized update data - Name: '{updatedData.Name}', Description: '{updatedData.Description}', Price: {updatedData.Price}");
-
-                // Проверяем, что данные не пустые
                 if (string.IsNullOrEmpty(updatedData.Name) || string.IsNullOrEmpty(updatedData.Description) || updatedData.Price <= 0)
                 {
-                    logger.LogError($"Invalid data after deserialization - Name: '{updatedData.Name}', Description: '{updatedData.Description}', Price: {updatedData.Price}");
                     return TypedResults.BadRequest(ResponseData<Cocktail>.Error("Invalid data after deserialization"));
                 }
 
-                // Логируем текущие значения перед обновлением
-                logger.LogInformation($"Before update - Name: '{existingCocktail.Name}', Description: '{existingCocktail.Description}', Price: {existingCocktail.Price}");
-
-                // Обновляем только необходимые поля
                 existingCocktail.Name = updatedData.Name;
                 existingCocktail.Description = updatedData.Description;
                 existingCocktail.Price = updatedData.Price;
 
-                // Обновляем изображение если есть файл
+                if (updatedData.Category != null && updatedData.Category.Id > 0)
+                {
+                    var categoryFromDb = await db.CocktailCategories
+                        .FirstOrDefaultAsync(c => c.Id == updatedData.Category.Id);
+
+                    if (categoryFromDb != null)
+                    {
+                        existingCocktail.Category = categoryFromDb;
+                    }
+                }
+                else
+                {
+                    existingCocktail.Category = null;
+                }
+
                 if (file != null)
                 {
-                    logger.LogInformation($"Processing image file for update: {file.FileName}");
                     var imageUrl = await mediator.Send(new SaveImage(file));
                     existingCocktail.PathToPicture = imageUrl;
                     existingCocktail.MimeType = file.ContentType;
                 }
-                else
-                {
-                    logger.LogInformation("No image file provided for update, keeping existing image");
-                }
-
-                // Логируем значения после обновления (перед сохранением)
-                logger.LogInformation($"After update (before save) - Name: '{existingCocktail.Name}', Description: '{existingCocktail.Description}', Price: {existingCocktail.Price}");
 
                 await db.SaveChangesAsync();
-
-                // Логируем значения после сохранения
-                logger.LogInformation($"After save - Name: '{existingCocktail.Name}', Description: '{existingCocktail.Description}', Price: {existingCocktail.Price}");
 
                 return TypedResults.Ok(ResponseData<Cocktail>.Success(existingCocktail));
             }
             catch (JsonException ex)
             {
-                logger.LogError($"JSON deserialization error in update: {ex.Message}");
-                logger.LogError($"Stack trace: {ex.StackTrace}");
                 return TypedResults.BadRequest(ResponseData<Cocktail>.Error($"JSON deserialization error: {ex.Message}"));
             }
             catch (Exception ex)
             {
-                logger.LogError($"Error updating cocktail: {ex.Message}");
-                logger.LogError($"Stack trace: {ex.StackTrace}");
                 return TypedResults.BadRequest(ResponseData<Cocktail>.Error($"Error updating cocktail: {ex.Message}"));
             }
         })

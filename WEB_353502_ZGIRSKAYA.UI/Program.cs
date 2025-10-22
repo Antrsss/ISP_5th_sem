@@ -15,7 +15,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            // Получение UriData ПЕРЕД регистрацией сервисов
             var uriData = builder.Configuration.GetSection("UriData").Get<UriData>() ?? new UriData
             {
                 ApiUri = "https://localhost:7002/api/"
@@ -32,7 +31,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
 
             builder.Services.AddDbContext<TempDbContext>();
 
-            // CORS должен быть ДО других сервисов
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -61,10 +59,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseRouting();
             app.UseAuthorization();
 
-            // Важно: MapRazorPages должно быть до MapControllerRoute
             app.MapRazorPages();
 
-            // Добавьте явный маршрут для Areas
             app.MapControllerRoute(
                 name: "area",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

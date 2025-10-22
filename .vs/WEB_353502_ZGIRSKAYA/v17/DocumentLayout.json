@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\services\\apicocktailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\services\\apicocktailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7DBDA764-CF85-488E-A0E1-C0D4B0420C88}|WEB_353502_ZGIRSKAYA.API\\WEB_353502_ZGIRSKAYA.API.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.api\\endpoints\\cocktailendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DBDA764-CF85-488E-A0E1-C0D4B0420C88}|WEB_353502_ZGIRSKAYA.API\\WEB_353502_ZGIRSKAYA.API.csproj|solutionrelative:web_353502_zgirskaya.api\\endpoints\\cocktailendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\services\\apicocktailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\services\\apicocktailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +34,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
+              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
+              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAcwE8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-21T20:50:16.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
+              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
+              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:50:10.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CocktailEndpoints.cs",
+              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "ViewState": "AgIAALIAAAAAAAAAAAAMwLAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:28:52.602Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -48,87 +82,35 @@
               "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Services\\ApiCocktailService.cs",
               "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Services\\ApiCocktailService.cs",
               "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Services\\ApiCocktailService.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAcwPwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAcwBYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T20:52:28.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAcwE8AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-21T20:50:16.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Edit.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Edit.cshtml.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAcwE8AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T20:50:10.131Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CocktailEndpoints.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
-              "ViewState": "AgIAANcAAAAAAAAAAAAcwOIAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T20:28:52.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Program.cs",
               "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Program.cs",
               "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Program.cs",
               "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Program.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAcwE4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T20:07:45.294Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Create.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml.cs",
               "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml.cs",
               "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml.cs",
               "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAcwEYAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBIAAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T20:06:27.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-21T20:00:22.807Z",
               "EditorCaption": ""
             }
           ]
