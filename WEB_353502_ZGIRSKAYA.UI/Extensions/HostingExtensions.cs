@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using WEB_353502_ZGIRSKAYA.UI.HelperClass;
+using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 

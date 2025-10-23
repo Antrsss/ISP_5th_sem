@@ -1,4 +1,4 @@
-﻿namespace WEB_353502_ZGIRSKAYA.UI.HelperClass
+﻿namespace WEB_353502_ZGIRSKAYA.UI.HelperClasses
 {
     internal class KeycloakData
     {

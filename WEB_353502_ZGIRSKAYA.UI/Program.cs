@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
 using WEB_353502_ZGIRSKAYA.UI.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
@@ -41,6 +45,36 @@ namespace WEB_353502_ZGIRSKAYA.UI
                 });
             });
 
+            // Регистрация конфигурации Keycloak
+            builder.Services.Configure<KeycloakData>(builder.Configuration.GetSection("Keycloak"));
+
+            // Получение данных Keycloak для настройки аутентификации
+            var keycloakData = builder.Configuration.GetSection("Keycloak").Get<KeycloakData>();
+
+            // Добавление аутентификации Cookie и OpenIdConnect
+            builder.Services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = "keycloak";
+                })
+                .AddCookie()
+                .AddOpenIdConnect("keycloak", options =>
+                {
+                    options.Authority = $"{keycloakData.Host}/auth/realms/{keycloakData.Realm}";
+                    options.ClientId = keycloakData.ClientId;
+                    options.ClientSecret = keycloakData.ClientSecret;
+                    options.ResponseType = OpenIdConnectResponseType.Code;
+                    options.Scope.Add("openid"); // Customize scopes as needed
+                    options.SaveTokens = true;
+                    options.RequireHttpsMetadata = false; // позволяет обращаться к локальному Keycloak по http
+                    options.MetadataAddress = $"{keycloakData.Host}/realms/{keycloakData.Realm}/.well-known/openid-configuration";
+                });
+
+            // Добавление политики авторизации
+            builder.Services.AddAuthorization(opt =>
+                opt.AddPolicy("admin", p => p.RequireRole("POWER-USER")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -57,9 +91,14 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+
+            // Добавление middleware аутентификации и авторизации
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapRazorPages();
+            // Ограничение доступа к страницам Razor Pages только для роли "admin"
+            app.MapRazorPages()
+               .RequireAuthorization("admin");
 
             app.MapControllerRoute(
                 name: "area",
