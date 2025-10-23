@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
 using WEB_353502_ZGIRSKAYA.UI.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services;
+using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 
@@ -30,6 +31,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
 
             builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt =>
                 opt.BaseAddress = new Uri($"{uriData.ApiUri}CocktailCategory/"));
+
+            builder.Services.AddHttpClient<ITokenAccessor, KeycloakTokenAccessor>();
 
             builder.Services.AddRazorPages();
 
