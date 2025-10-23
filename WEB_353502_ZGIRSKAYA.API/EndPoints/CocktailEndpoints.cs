@@ -39,8 +39,7 @@ public static class CocktailEndpoints
                 : TypedResults.NotFound();
         })
         .WithName("GetCocktailById")
-        .WithOpenApi()
-        .AllowAnonymous();
+        .WithOpenApi();
 
         group.MapPost("/", async (
             [FromForm] string cocktail,

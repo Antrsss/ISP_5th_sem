@@ -41,7 +41,7 @@ namespace WEB_353502_ZGIRSKAYA.API
             // ƒобавить сервис авторизации с политикой "admin"
             builder.Services.AddAuthorization(opt =>
             {
-                opt.AddPolicy("admin", p => p.RequireClaim("realm_access.roles", "POWER-USER"));
+                opt.AddPolicy("admin", p => p.RequireRole("POWER-USER"));
             });
 
             builder.Services.AddDbContext<AppDbContext>(options =>
