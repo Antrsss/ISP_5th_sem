@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WEB_353502_ZGIRSKAYA.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eef31040861779ced806b3b59ac95c77be52878a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfb1dc49c6c82f43e0669189a93ef7ba8d553926")]
 [assembly: System.Reflection.AssemblyProductAttribute("WEB_353502_ZGIRSKAYA.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WEB_353502_ZGIRSKAYA.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
