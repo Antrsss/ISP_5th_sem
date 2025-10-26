@@ -35,7 +35,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt =>
                 opt.BaseAddress = new Uri($"{uriData.ApiUri}CocktailCategory/"));
 
-            builder.Services.AddHttpClient<ITokenAccessor, KeycloakTokenAccessor>();
+            builder.Services.AddScoped<ITokenAccessor, KeycloakTokenAccessor>();
+            builder.Services.AddHttpClient();
 
             builder.Services.AddRazorPages();
 
@@ -204,7 +205,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddAuthorization(opt =>
                 opt.AddPolicy("admin", p => p.RequireRole("POWER-USER")));
 
-            builder.Services.AddScoped<ITokenAccessor, KeycloakTokenAccessor>();
             builder.Services.AddScoped<IFileService, LocalFileService>();
             builder.Services.AddHttpContextAccessor();
 
@@ -234,12 +234,18 @@ namespace WEB_353502_ZGIRSKAYA.UI
                .RequireAuthorization("admin");
 
             app.MapControllerRoute(
-                name: "area",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-            app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            // Добавьте явный маршрут для Account
+            app.MapControllerRoute(
+                name: "account",
+                pattern: "Account/{action}/{id?}",
+                defaults: new { controller = "Account" });
+
+            app.MapControllerRoute(
+                name: "area",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

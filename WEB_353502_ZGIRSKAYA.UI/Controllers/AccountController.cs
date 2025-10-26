@@ -9,17 +9,33 @@ using WEB_353502_ZGIRSKAYA.UI.Services.FileService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {
-    public class AccountController(IHttpContextAccessor contextAccessor,
-                                   HttpClient httpClient,
-                                   ITokenAccessor tokenAccessor,
-                                   IOptions<KeycloakData> options,
-                                   IFileService fileService) : Controller
+    public class AccountController : Controller // ← Уберите параметры из объявления класса
     {
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly HttpClient _httpClient;
+        private readonly ITokenAccessor _tokenAccessor;
+        private readonly IOptions<KeycloakData> _options;
+        private readonly IFileService _fileService;
 
+        public AccountController(IHttpContextAccessor contextAccessor,
+                               HttpClient httpClient,
+                               ITokenAccessor tokenAccessor,
+                               IOptions<KeycloakData> options,
+                               IFileService fileService)
+        {
+            _contextAccessor = contextAccessor;
+            _httpClient = httpClient;
+            _tokenAccessor = tokenAccessor;
+            _options = options;
+            _fileService = fileService;
+        }
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View(new RegisterUserViewModel());
         }
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Register(RegisterUserViewModel user)
@@ -30,55 +46,109 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                 {
                     return BadRequest();
                 }
+
+                Console.WriteLine("=== ДИАГНОСТИКА РЕГИСТРАЦИИ ===");
+
                 try
                 {
-                    await tokenAccessor.SetAuthorizationHeaderAsync(httpClient, true);
+                    Console.WriteLine("1. Получение токена Service Account...");
+                    await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, true);
+
+                    // ДИАГНОСТИКА: проверяем токен
+                    var token = _httpClient.DefaultRequestHeaders.Authorization?.Parameter;
+                    Console.WriteLine($"2. Токен получен: {!string.IsNullOrEmpty(token)}");
+
+                    if (string.IsNullOrEmpty(token))
+                    {
+                        ModelState.AddModelError("", "Не удалось получить токен авторизации");
+                        return View(user);
+                    }
+
+                    // ДИАГНОСТИКА: проверяем доступ к API
+                    Console.WriteLine("3. Проверка прав доступа...");
+                    var testUrl = $"{_options.Value.Host}/admin/realms/{_options.Value.Realm}/users?max=1";
+                    Console.WriteLine($"   URL: {testUrl}");
+
+                    var testResponse = await _httpClient.GetAsync(testUrl);
+                    Console.WriteLine($"4. Тестовый запрос: {testResponse.StatusCode}");
+
+                    if (!testResponse.IsSuccessStatusCode)
+                    {
+                        var testError = await testResponse.Content.ReadAsStringAsync();
+                        Console.WriteLine($"5. Ошибка прав: {testError}");
+                        ModelState.AddModelError("",
+                            $"Нет прав на управление пользователями. Status: {testResponse.StatusCode}");
+                        return View(user);
+                    }
+
+                    Console.WriteLine("6. Права подтверждены, создаем пользователя...");
                 }
                 catch (Exception ex)
                 {
-                    return Unauthorized();
+                    Console.WriteLine($"ОШИБКА АВТОРИЗАЦИИ: {ex.Message}");
+                    Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                    ModelState.AddModelError("", $"Ошибка авторизации: {ex.Message}");
+                    return View(user);
                 }
+
+                // Остальной код создания пользователя...
                 var avatarUrl = "/images/default-profile-picture.png";
-                // сохранить Avatar, если аватар был передан при регистрации
                 if (user.Avatar != null)
                 {
-                    avatarUrl = await fileService.SaveFileAsync(user.Avatar);
+                    avatarUrl = await _fileService.SaveFileAsync(user.Avatar);
                 }
-                // Подготовка данных нового пользователя
+
                 var newUser = new CreateUserModel();
                 newUser.Attributes.Add("avatar", avatarUrl);
                 newUser.Email = user.Email;
                 newUser.Username = user.Email;
                 newUser.Credentials.Add(new UserCredentials { Value = user.Password });
 
-                // Keycloak user endpoint
-                var requestUri =
-                    $"{options.Value.Host}/admin/realms/{options.Value.Realm}/users";
-                // Подготовить контент запроса
+                var requestUri = $"{_options.Value.Host}/admin/realms/{_options.Value.Realm}/users";
+
                 var serializerOptions = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 };
                 var userData = JsonSerializer.Serialize(newUser, serializerOptions);
                 HttpContent content = new StringContent(userData, Encoding.UTF8, "application/json");
-                // Отправить запрос
-                var response = await httpClient.PostAsync(requestUri, content);//,serializerOptions);
 
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    return Redirect(Url.Action("Index", "Home"));
+                    Console.WriteLine("7. Отправка запроса на создание пользователя...");
+                    var response = await _httpClient.PostAsync(requestUri, content);
+                    Console.WriteLine($"8. Ответ Keycloak: {response.StatusCode}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("9. ПОЛЬЗОВАТЕЛЬ УСПЕШНО СОЗДАН!");
+                        return Redirect(Url.Action("Index", "Home"));
+                    }
+                    else
+                    {
+                        var errorContent = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"10. Ошибка создания: {errorContent}");
+                        ModelState.AddModelError("", $"Ошибка создания пользователя: {response.StatusCode}");
+                        return View(user);
+                    }
                 }
-                else return BadRequest(response.StatusCode);
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"11. Ошибка запроса: {ex.Message}");
+                    ModelState.AddModelError("", "Ошибка при создании пользователя");
+                    return View(user);
+                }
             }
             return View(user);
-
         }
+
         class UserCredentials
         {
             public string Type { get; set; } = "password";
             public bool Temporary { get; set; } = false;
             public string Value { get; set; }
         }
+
         class CreateUserModel
         {
             public Dictionary<string, string> Attributes { get; set; } = new();
