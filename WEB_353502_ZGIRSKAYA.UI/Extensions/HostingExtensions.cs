@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
+using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 
@@ -13,6 +14,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Extensions
                 MemoryCategoryService>();
             builder.Services.AddScoped<ICocktailService, MemoryCocktailService>();
             builder.Services.Configure<KeycloakData>(builder.Configuration.GetSection("Keycloak"));
+            builder.Services.AddHttpClient<ITokenAccessor, KeycloakTokenAccessor>();
         }
     }
 }

@@ -1,59 +1,73 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
-using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
 using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
+using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Services.Authentication
 {
-    internal class KeycloakTokenAccessor(
-        IHttpContextAccessor contextAccessor,
-        IOptions<KeycloakData> options,
-        HttpClient httpClient) : ITokenAccessor
+    public class KeycloakTokenAccessor : ITokenAccessor
     {
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly KeycloakData _keycloakData;
+        private readonly HttpClient _httpClient;
+
+        public KeycloakTokenAccessor(
+            IHttpContextAccessor contextAccessor,
+            IOptions<KeycloakData> options,
+            HttpClient httpClient)
+        {
+            _contextAccessor = contextAccessor;
+            _keycloakData = options.Value;
+            _httpClient = httpClient;
+        }
+
         public async Task SetAuthorizationHeaderAsync(HttpClient httpClient, bool isClient)
         {
             string token = isClient
-             ? await GetClientToken()
-             : await GetUserToken();
-            httpClient
-            .DefaultRequestHeaders
-            .Authorization = new AuthenticationHeaderValue("bearer", token);
+                ? await GetClientToken()
+                : await GetUserToken();
+
+            httpClient.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", token);
         }
-        async Task<string> GetUserToken()
+
+        private async Task<string> GetUserToken()
         {
-            var context = contextAccessor.HttpContext;
+            var context = _contextAccessor.HttpContext;
             var authSession = await context.AuthenticateAsync("keycloak");
+
             if (authSession?.Principal == null)
             {
-                throw new AuthenticationFailureException("Пользователь не авторизован");
+                throw new AuthenticationFailureException("Пользователь неавторизован");
             }
+
             return await context.GetTokenAsync("keycloak", "access_token");
         }
 
-        async Task<string> GetClientToken()
+        private async Task<string> GetClientToken()
         {
             // Keycloak token endpoint
-            var requestUri = 
-                $"{options.Value.Host}/realms/{options.Value.Realm}/protocol/openidconnect/token";
+            var requestUri = $"{_keycloakData.Host}/realms/{_keycloakData.Realm}/protocol/openid-connect/token";
+
             // Http request content
             HttpContent content = new FormUrlEncodedContent([
-                new KeyValuePair<string,string>
-                ("client_id",options.Value.ClientId),
-                 new KeyValuePair<string,string>
-                ("grant_type","client_credentials"),
-                 new KeyValuePair<string,string>
-                ("client_secret",options.Value.ClientSecret)
+                new KeyValuePair<string, string>("client_id", _keycloakData.ClientId),
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                new KeyValuePair<string, string>("client_secret", _keycloakData.ClientSecret)
             ]);
+
             // send request
-            var response = await httpClient.PostAsync(requestUri, content);
+            var response = await _httpClient.PostAsync(requestUri, content);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(response.StatusCode.ToString());
             }
+
             // extract access token from response
             var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonObject.Parse(jsonString)["access_token"].GetValue<string>();
+            return JsonObject.Parse(jsonString)?["access_token"]?.GetValue<string>() ??
+                   throw new InvalidOperationException("Access token not found in response");
         }
     }
 }

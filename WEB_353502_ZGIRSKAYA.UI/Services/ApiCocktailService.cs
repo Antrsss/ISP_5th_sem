@@ -2,6 +2,7 @@
 using System.Text.Json;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.Domain.Models;
+using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Services
@@ -11,8 +12,12 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
         private readonly HttpClient _httpClient;
         private readonly string _pageSize;
         private readonly JsonSerializerOptions _serializerOptions;
+        private readonly ITokenAccessor _tokenAccessor;
 
-        public ApiCocktailService(HttpClient httpClient, IConfiguration configuration, ILogger<ApiCocktailService> logger)
+        public ApiCocktailService(HttpClient httpClient,
+                                IConfiguration configuration,
+                                ILogger<ApiCocktailService> logger,
+                                ITokenAccessor tokenAccessor)
         {
             _httpClient = httpClient;
             _pageSize = configuration.GetValue<string>("ItemsPerPage") ?? "3";
@@ -21,10 +26,20 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles
             };
+            _tokenAccessor = tokenAccessor;
         }
 
         public async Task<ResponseData<ListModel<Cocktail>>> GetCocktailListAsync(string? categoryNormalizedName, int pageNo = 1)
         {
+            try
+            {
+                await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, false);
+            }
+            catch (Exception e)
+            {
+                return ResponseData<ListModel<Cocktail>>.Error($"Данные не получены. Error: {e.Message}");
+            }
+
             var queryParams = new List<string>();
 
             var urlString = string.IsNullOrEmpty(categoryNormalizedName)
@@ -65,6 +80,15 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task<ResponseData<Cocktail>> GetCocktailByIdAsync(int id)
         {
+            try
+            {
+                await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, false);
+            }
+            catch (Exception e)
+            {
+                return ResponseData<Cocktail>.Error($"Данные не получены. Error: {e.Message}");
+            }
+
             var response = await _httpClient.GetAsync($"{id}");
 
             if (response.IsSuccessStatusCode)
@@ -84,6 +108,17 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task<ResponseData<Cocktail>> CreateCocktailAsync(Cocktail cocktail, IFormFile? formFile)
         {
+            try
+            {
+                await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, false);
+                var authHeader = _httpClient.DefaultRequestHeaders.Authorization;
+                Console.WriteLine($"Authorization Header: {authHeader}");
+            }
+            catch (Exception e)
+            {
+                return ResponseData<Cocktail>.Error($"Объект не добавлен. Error: {e.Message}");
+            }
+
             cocktail.PathToPicture = "images/noimage.jpg";
 
             var request = new HttpRequestMessage
@@ -141,6 +176,15 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task UpdateCocktailAsync(int id, Cocktail cocktail, IFormFile? formFile)
         {
+            try
+            {
+                await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, false);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Объект не обновлен. Error: {e.Message}");
+            }
+
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Put,
@@ -186,6 +230,15 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services
 
         public async Task DeleteCocktailAsync(int id)
         {
+            try
+            {
+                await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, false);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Объект не удален. Error: {e.Message}");
+            }
+
             var response = await _httpClient.DeleteAsync($"{id}");
 
             if (!response.IsSuccessStatusCode)

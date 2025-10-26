@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+п»їusing Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -19,6 +19,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddHttpContextAccessor();
 
             var uriData = builder.Configuration.GetSection("UriData").Get<UriData>() ?? new UriData
             {
@@ -48,36 +50,59 @@ namespace WEB_353502_ZGIRSKAYA.UI
                 });
             });
 
-            // Регистрация конфигурации Keycloak
+            // Р РµРіРёСЃС‚СЂР°С†РёСЏ РєРѕРЅС„РёРіСѓСЂР°С†РёРё Keycloak
             builder.Services.Configure<KeycloakData>(builder.Configuration.GetSection("Keycloak"));
 
-            // Получение данных Keycloak для настройки аутентификации
+            // РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… Keycloak РґР»СЏ РЅР°СЃС‚СЂРѕР№РєРё Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё
             var keycloakData = builder.Configuration.GetSection("Keycloak").Get<KeycloakData>();
 
-            // Добавление аутентификации Cookie и OpenIdConnect
+            // Р”РѕР±Р°РІР»РµРЅРёРµ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё Cookie Рё OpenIdConnect
             builder.Services
                 .AddAuthentication(options =>
                 {
                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = "keycloak";
                 })
-                .AddCookie()
+                .AddCookie(options =>
+                {
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.SameAsRequest;
+                    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+                    options.SlidingExpiration = true;
+                })
                 .AddOpenIdConnect("keycloak", options =>
                 {
-                    // Используем путь /realms/... чтобы совпадать с iss в токене (см. ваш пример).
+                    // РРЎРџР РђР’Р›Р•РќРћ: РЈР±РµРґРёС‚РµСЃСЊ, С‡С‚Рѕ Authority Рё MetadataAddress РёСЃРїРѕР»СЊР·СѓСЋС‚ РѕРґРёРЅР°РєРѕРІСѓСЋ СЃС‚СЂСѓРєС‚СѓСЂСѓ URL
+                    // РћР±С‹С‡РЅРѕ РїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚: http://localhost:8080/realms/master
                     options.Authority = $"{keycloakData.Host}/realms/{keycloakData.Realm}";
                     options.ClientId = keycloakData.ClientId;
                     options.ClientSecret = keycloakData.ClientSecret;
                     options.ResponseType = OpenIdConnectResponseType.Code;
+
+                    // РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅС‹ РЅРµРѕР±С…РѕРґРёРјС‹Рµ scopes
                     options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+                    options.Scope.Add("offline_access"); // Р’Р°Р¶РЅРѕ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ refresh token
+
                     options.SaveTokens = true;
                     options.RequireHttpsMetadata = false;
+
+                    // РРЎРџР РђР’Р›Р•РќРћ: MetadataAddress РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РЅС‹Рј URL
                     options.MetadataAddress = $"{keycloakData.Host}/realms/{keycloakData.Realm}/.well-known/openid-configuration";
 
-                    // Указываем, чтобы роли в claims были представлены как ClaimTypes.Role
+                    // РќР°СЃС‚СЂРѕР№РєРё РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ С‚РѕРєРµРЅРѕРІ
+                    options.UseTokenLifetime = false;
+                    options.RefreshOnIssuerKeyNotFound = true;
+
+                    // РРЎРџР РђР’Р›Р•РќРћ: РќР°СЃС‚СЂРѕР№РєР° РІР°Р»РёРґР°С†РёРё С‚РѕРєРµРЅРѕРІ
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
-                        RoleClaimType = System.Security.Claims.ClaimTypes.Role
+                        RoleClaimType = System.Security.Claims.ClaimTypes.Role,
+                        NameClaimType = "name",
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.FromMinutes(1)
                     };
 
                     options.Events = new OpenIdConnectEvents
@@ -89,7 +114,7 @@ namespace WEB_353502_ZGIRSKAYA.UI
                             {
                                 try
                                 {
-                                    // 1) realm_access (обычная структура Keycloak)
+                                    // 1) realm_access (РѕР±С‹С‡РЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° Keycloak)
                                     var realmAccess = context.Principal.FindFirst("realm_access")?.Value;
                                     if (!string.IsNullOrEmpty(realmAccess))
                                     {
@@ -126,11 +151,10 @@ namespace WEB_353502_ZGIRSKAYA.UI
                                         }
                                     }
 
-                                    // 3) топ-левел "role" или "roles" — как в вашем примере
+                                    // 3) С‚РѕРї-Р»РµРІРµР» "role" РёР»Рё "roles"
                                     var topRoleClaim = context.Principal.FindFirst("role")?.Value ?? context.Principal.FindFirst("roles")?.Value;
                                     if (!string.IsNullOrEmpty(topRoleClaim))
                                     {
-                                        // Если это JSON-массив или строка с сериализованным массивом — попробуем распарсить
                                         try
                                         {
                                             using var doc = System.Text.Json.JsonDocument.Parse(topRoleClaim);
@@ -146,8 +170,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
                                         }
                                         catch
                                         {
-                                            // Если не JSON — возможно это просто перечисление или одиночная строка
-                                            // Попробуем разделить по запятым
                                             var parts = topRoleClaim.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                                             foreach (var part in parts)
                                                 claimsIdentity.AddClaim(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, part));
@@ -156,18 +178,30 @@ namespace WEB_353502_ZGIRSKAYA.UI
                                 }
                                 catch (Exception ex)
                                 {
-                                    // Логирование полезно при отладке — можно заменить на реальное логирование
                                     System.Diagnostics.Trace.TraceWarning($"OnTokenValidated parsing roles failed: {ex.Message}");
                                 }
                             }
 
                             return System.Threading.Tasks.Task.CompletedTask;
+                        },
+
+                        OnAuthenticationFailed = context =>
+                        {
+                            context.Response.Redirect("/Home/Error");
+                            context.HandleResponse();
+                            return System.Threading.Tasks.Task.CompletedTask;
+                        },
+
+                        OnAccessDenied = context =>
+                        {
+                            context.Response.Redirect("/Home/AccessDenied");
+                            context.HandleResponse();
+                            return System.Threading.Tasks.Task.CompletedTask;
                         }
                     };
                 });
 
-
-            // Добавление политики авторизации
+            // Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕР»РёС‚РёРєРё Р°РІС‚РѕСЂРёР·Р°С†РёРё
             builder.Services.AddAuthorization(opt =>
                 opt.AddPolicy("admin", p => p.RequireRole("POWER-USER")));
 
@@ -188,11 +222,11 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseStaticFiles();
             app.UseRouting();
 
-            // Добавление middleware аутентификации и авторизации
+            // Р”РѕР±Р°РІР»РµРЅРёРµ middleware Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё Рё Р°РІС‚РѕСЂРёР·Р°С†РёРё
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Ограничение доступа к страницам Razor Pages только для роли "admin"
+            // РћРіСЂР°РЅРёС‡РµРЅРёРµ РґРѕСЃС‚СѓРїР° Рє СЃС‚СЂР°РЅРёС†Р°Рј Razor Pages С‚РѕР»СЊРєРѕ РґР»СЏ СЂРѕР»Рё "admin"
             app.MapRazorPages()
                .RequireAuthorization("admin");
 

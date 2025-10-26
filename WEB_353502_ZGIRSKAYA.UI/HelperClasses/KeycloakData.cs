@@ -1,6 +1,6 @@
 ﻿namespace WEB_353502_ZGIRSKAYA.UI.HelperClasses
 {
-    internal class KeycloakData
+    public class KeycloakData
     {
         public string Host { get; set; }
         public string Realm { get; set; }
