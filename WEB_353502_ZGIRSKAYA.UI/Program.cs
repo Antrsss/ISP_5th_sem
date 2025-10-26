@@ -8,6 +8,7 @@ using WEB_353502_ZGIRSKAYA.UI.Services;
 using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
+using WEB_353502_ZGIRSKAYA.UI.Services.FileService;
 
 namespace WEB_353502_ZGIRSKAYA.UI
 {
@@ -37,8 +38,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddHttpClient<ITokenAccessor, KeycloakTokenAccessor>();
 
             builder.Services.AddRazorPages();
-
-            builder.Services.AddDbContext<TempDbContext>();
 
             builder.Services.AddCors(options =>
             {
@@ -204,6 +203,10 @@ namespace WEB_353502_ZGIRSKAYA.UI
             // Добавление политики авторизации
             builder.Services.AddAuthorization(opt =>
                 opt.AddPolicy("admin", p => p.RequireRole("POWER-USER")));
+
+            builder.Services.AddScoped<ITokenAccessor, KeycloakTokenAccessor>();
+            builder.Services.AddScoped<IFileService, LocalFileService>();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
