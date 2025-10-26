@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Text;
 using System.Text.Json;
@@ -140,6 +142,29 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                 }
             }
             return View(user);
+        }
+
+        [HttpGet]
+        public async Task Login()
+        {
+            await HttpContext.ChallengeAsync(
+            "keycloak",
+            new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("Index", "Home")
+            });
+        }
+
+        [HttpPost]
+        public async Task Logout()
+        {
+            await
+           HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync("keycloak",
+            new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("Index", "Home")
+            });
         }
 
         class UserCredentials
