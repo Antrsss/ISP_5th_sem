@@ -28,7 +28,6 @@
                 <span asp-validation-for="Cocktail.Description" class="text-danger"></span>
             </div>
 
-            <!-- Добавляем выбор категории -->
             <div class="mb-3">
                 <label asp-for="SelectedCategoryId" class="form-label">Category</label>
                 <select asp-for="SelectedCategoryId" class="form-control">
@@ -47,7 +46,6 @@
                 <span asp-validation-for="Cocktail.Price" class="text-danger"></span>
             </div>
 
-            <!-- Текущее изображение -->
             @if (!string.IsNullOrEmpty(Model.Cocktail.PathToPicture) && Model.Cocktail.PathToPicture != "images/noimage.jpg")
             {
                 <div class="mb-3">
@@ -59,7 +57,6 @@
                 </div>
             }
 
-            <!-- Поле для загрузки нового изображения -->
             <div class="mb-3">
                 <label asp-for="Image" class="form-label">Заменить изображение</label>
                 <input asp-for="Image" class="form-control" type="file" accept="image/*" />

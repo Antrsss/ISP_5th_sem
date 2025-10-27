@@ -47,24 +47,20 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services.Authentication
 
         private async Task<string> GetClientToken()
         {
-            // Keycloak token endpoint
             var requestUri = $"{_keycloakData.Host}/realms/{_keycloakData.Realm}/protocol/openid-connect/token";
 
-            // Http request content
             HttpContent content = new FormUrlEncodedContent([
                 new KeyValuePair<string, string>("client_id", _keycloakData.ClientId),
                 new KeyValuePair<string, string>("grant_type", "client_credentials"),
                 new KeyValuePair<string, string>("client_secret", _keycloakData.ClientSecret)
             ]);
 
-            // send request
             var response = await _httpClient.PostAsync(requestUri, content);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(response.StatusCode.ToString());
             }
 
-            // extract access token from response
             var jsonString = await response.Content.ReadAsStringAsync();
             return JsonObject.Parse(jsonString)?["access_token"]?.GetValue<string>() ??
                    throw new InvalidOperationException("Access token not found in response");

@@ -75,7 +75,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
                 await _cocktailService.UpdateCocktailAsync(Cocktail.Id, Cocktail, Image);
                 return RedirectToPage("./Index");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Ошибка при обновлении: {ex.Message}");
                 return Page();

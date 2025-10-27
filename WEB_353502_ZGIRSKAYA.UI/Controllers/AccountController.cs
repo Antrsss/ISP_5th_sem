@@ -11,7 +11,7 @@ using WEB_353502_ZGIRSKAYA.UI.Services.FileService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {
-    public class AccountController : Controller // ← Уберите параметры из объявления класса
+    public class AccountController : Controller
     {
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly HttpClient _httpClient;
@@ -49,16 +49,11 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                     return BadRequest();
                 }
 
-                Console.WriteLine("=== ДИАГНОСТИКА РЕГИСТРАЦИИ ===");
-
                 try
                 {
-                    Console.WriteLine("1. Получение токена Service Account...");
                     await _tokenAccessor.SetAuthorizationHeaderAsync(_httpClient, true);
 
-                    // ДИАГНОСТИКА: проверяем токен
                     var token = _httpClient.DefaultRequestHeaders.Authorization?.Parameter;
-                    Console.WriteLine($"2. Токен получен: {!string.IsNullOrEmpty(token)}");
 
                     if (string.IsNullOrEmpty(token))
                     {
@@ -66,34 +61,24 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                         return View(user);
                     }
 
-                    // ДИАГНОСТИКА: проверяем доступ к API
-                    Console.WriteLine("3. Проверка прав доступа...");
                     var testUrl = $"{_options.Value.Host}/admin/realms/{_options.Value.Realm}/users?max=1";
-                    Console.WriteLine($"   URL: {testUrl}");
 
                     var testResponse = await _httpClient.GetAsync(testUrl);
-                    Console.WriteLine($"4. Тестовый запрос: {testResponse.StatusCode}");
 
                     if (!testResponse.IsSuccessStatusCode)
                     {
                         var testError = await testResponse.Content.ReadAsStringAsync();
-                        Console.WriteLine($"5. Ошибка прав: {testError}");
                         ModelState.AddModelError("",
                             $"Нет прав на управление пользователями. Status: {testResponse.StatusCode}");
                         return View(user);
                     }
-
-                    Console.WriteLine("6. Права подтверждены, создаем пользователя...");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"ОШИБКА АВТОРИЗАЦИИ: {ex.Message}");
-                    Console.WriteLine($"StackTrace: {ex.StackTrace}");
                     ModelState.AddModelError("", $"Ошибка авторизации: {ex.Message}");
                     return View(user);
                 }
 
-                // Остальной код создания пользователя...
                 var avatarUrl = "/images/default-profile-picture.png";
                 if (user.Avatar != null)
                 {
@@ -117,26 +102,21 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 
                 try
                 {
-                    Console.WriteLine("7. Отправка запроса на создание пользователя...");
                     var response = await _httpClient.PostAsync(requestUri, content);
-                    Console.WriteLine($"8. Ответ Keycloak: {response.StatusCode}");
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("9. ПОЛЬЗОВАТЕЛЬ УСПЕШНО СОЗДАН!");
                         return Redirect(Url.Action("Index", "Home"));
                     }
                     else
                     {
                         var errorContent = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine($"10. Ошибка создания: {errorContent}");
                         ModelState.AddModelError("", $"Ошибка создания пользователя: {response.StatusCode}");
                         return View(user);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"11. Ошибка запроса: {ex.Message}");
                     ModelState.AddModelError("", "Ошибка при создании пользователя");
                     return View(user);
                 }
@@ -148,18 +128,18 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
         public async Task Login()
         {
             await HttpContext.ChallengeAsync(
-            "keycloak",
-            new AuthenticationProperties
-            {
-                RedirectUri = Url.Action("Index", "Home")
-            });
+                "keycloak",
+                new AuthenticationProperties
+                {
+                    RedirectUri = Url.Action("Index", "Home")
+                });
         }
 
         [HttpPost]
         public async Task Logout()
         {
             await
-           HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignOutAsync("keycloak",
             new AuthenticationProperties
             {

@@ -19,12 +19,10 @@ namespace WEB_353502_ZGIRSKAYA.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            // Добавьте эту секцию ДО builder.Build()
             var authServer = builder.Configuration
                 .GetSection("AuthServer")
                 .Get<AuthServerData>();
 
-            // Добавить сервис аутентификации
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, o =>
                 {
@@ -38,7 +36,6 @@ namespace WEB_353502_ZGIRSKAYA.API
                     o.RequireHttpsMetadata = false;
                 });
 
-            // Добавить сервис авторизации с политикой "admin"
             builder.Services.AddAuthorization(opt =>
             {
                 opt.AddPolicy("admin", p => p.RequireRole("POWER-USER"));
@@ -65,8 +62,7 @@ namespace WEB_353502_ZGIRSKAYA.API
 
             app.UseRouting();
 
-            // Добавьте эти middleware в правильном порядке
-            app.UseAuthentication(); // ДОЛЖНО БЫТЬ ДО UseAuthorization
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseStaticFiles();

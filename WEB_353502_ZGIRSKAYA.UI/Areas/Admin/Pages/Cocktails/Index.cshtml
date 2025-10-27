@@ -48,7 +48,6 @@ else
                         }
                     </td>
                     <td class="text-end">
-                        <!-- Используйте asp-route-id -->
                         <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">
                             <i class="bi bi-pencil"></i> Edit
                         </a>
@@ -64,7 +63,6 @@ else
         </tbody>
     </table>
 
-    <!-- Пагинация -->
     @if (Model.CocktailsModel.TotalPages > 1)
     {
         <nav aria-label="Page navigation" class="mt-4">
