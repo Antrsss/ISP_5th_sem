@@ -14,6 +14,7 @@ wwwroot\Images\c48671f5-ee3a-4b55-9828-a32a869905eb.jpg
 wwwroot\Images\c5c387f3-fae6-40bb-97e6-add25e0f5a5a.jpg
 wwwroot\Images\colada.jpg
 wwwroot\Images\d8d7c29e-06ec-4409-aac7-634986012d23.jpg
+wwwroot\Images\e2c145c2-67e0-41ae-8f6f-fb1c3c3928ae.jpg
 wwwroot\Images\f81a2312-5ef0-41fc-b842-182e83e2931f.jpg
 wwwroot\Images\fc0124a8-dad5-44a1-80e7-e11b81b63720.jpg
 wwwroot\Images\fdf13a46-db4c-45b6-b0ea-c5b7ee479f6f.jpg

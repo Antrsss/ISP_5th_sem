@@ -1,10 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace WEB_353502_ZGIRSKAYA.API.UseCases
 {
@@ -30,7 +24,6 @@ namespace WEB_353502_ZGIRSKAYA.API.UseCases
                 throw new ArgumentException("Файл не предоставлен или пустой");
             }
 
-            // Проверяем, что файл является изображением
             var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
             var fileExtension = Path.GetExtension(request.File.FileName).ToLowerInvariant();
 
@@ -39,11 +32,9 @@ namespace WEB_353502_ZGIRSKAYA.API.UseCases
                 throw new ArgumentException("Недопустимый формат файла. Разрешены только изображения.");
             }
 
-            // Создаем уникальное имя файла
             var fileName = $"{Guid.NewGuid()}{fileExtension}";
             var uploadsFolder = Path.Combine(_env.WebRootPath, "images");
 
-            // Создаем папку, если она не существует
             if (!Directory.Exists(uploadsFolder))
             {
                 Directory.CreateDirectory(uploadsFolder);
@@ -51,13 +42,11 @@ namespace WEB_353502_ZGIRSKAYA.API.UseCases
 
             var filePath = Path.Combine(uploadsFolder, fileName);
 
-            // Сохраняем файл
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await request.File.CopyToAsync(stream, cancellationToken);
             }
 
-            // Формируем URL для доступа к изображению
             var httpContext = _httpContextAccessor.HttpContext;
             if (httpContext == null)
             {

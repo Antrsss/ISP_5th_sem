@@ -29,8 +29,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
 
             builder.Services.AddRazorPages();
 
-            builder.Services.AddDbContext<TempDbContext>();
-
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -60,10 +58,6 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseAuthorization();
 
             app.MapRazorPages();
-
-            app.MapControllerRoute(
-                name: "area",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",
