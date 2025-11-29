@@ -3,6 +3,7 @@ using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.Domain.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
+using WEB_353502_ZGIRSKAYA.UI.Extensions; // Добавляем using для расширений
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {
@@ -29,13 +30,10 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                     return View(new ListModel<Cocktail>());
                 }
 
-                // Проверяем, является ли запрос AJAX
-                bool isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
-
-                if (isAjax)
+                // Используем расширяющий метод для проверки AJAX запроса
+                if (Request.IsAjaxRequest())
                 {
                     // Для AJAX запросов возвращаем только частичное представление
-                    // Передаем необходимые данные через ViewData
                     ViewData["CurrentCategory"] = category;
                     return PartialView("_CocktailListPartial", cocktailResponse.Data);
                 }
@@ -56,8 +54,8 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             {
                 TempData["Error"] = $"Ошибка при загрузке данных: {ex.Message}";
 
-                bool isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
-                if (isAjax)
+                // Используем расширяющий метод и здесь
+                if (Request.IsAjaxRequest())
                 {
                     return PartialView("_CocktailListPartial", new ListModel<Cocktail>());
                 }
@@ -66,6 +64,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             }
         }
 
+        // Остальные методы контроллера остаются без изменений...
         public async Task<IActionResult> Details(int id)
         {
             try
