@@ -65,33 +65,8 @@ else
 
     @if (Model.CocktailsModel.TotalPages > 1)
     {
-        <nav aria-label="Page navigation" class="mt-4">
-            <ul class="pagination justify-content-center">
-                <li class="page-item @(Model.CocktailsModel.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link"
-                       asp-page="./Index"
-                       asp-route-pageNo="@(Model.CocktailsModel.CurrentPage - 1)"
-                       aria-label="Previous">
-                        <span class="bi bi-chevron-left" aria-hidden="true"></span>
-                    </a>
-                </li>
-
-                @for (int i = 1; i <= Model.CocktailsModel.TotalPages; i++)
-                {
-                    <li class="page-item @(i == Model.CocktailsModel.CurrentPage ? "active" : "")">
-                        <a class="page-link" asp-page="./Index" asp-route-pageNo="@i">@i</a>
-                    </li>
-                }
-
-                <li class="page-item @(Model.CocktailsModel.CurrentPage == Model.CocktailsModel.TotalPages ? "disabled" : "")">
-                    <a class="page-link"
-                       asp-page="./Index"
-                       asp-route-pageNo="@(Model.CocktailsModel.CurrentPage + 1)"
-                       aria-label="Next">
-                        <span class="bi bi-chevron-right" aria-hidden="true"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <pager current-page="@Model.CocktailsModel.CurrentPage"
+               total-pages="@Model.CocktailsModel.TotalPages"
+               admin="true"></pager>
     }
 }
