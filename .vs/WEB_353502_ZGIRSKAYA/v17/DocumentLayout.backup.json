@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\taghelpers\\pagertaghelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\taghelpers\\pagertaghelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\cocktails\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\areas\\admin\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\areas\\admin\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C003963-760F-4B53-8DBC-6D5605B968EE}|WEB_353502_ZGIRSKAYA.Domain\\WEB_353502_ZGIRSKAYA.Domain.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.domain\\entities\\cocktailcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C003963-760F-4B53-8DBC-6D5605B968EE}|WEB_353502_ZGIRSKAYA.Domain\\WEB_353502_ZGIRSKAYA.Domain.csproj|solutionrelative:web_353502_zgirskaya.domain\\entities\\cocktailcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2007E67-5D64-4AC6-A185-B1F792F69651}|WEB_353502_ZGIRSKAYA.UI\\WEB_353502_ZGIRSKAYA.UI.csproj|solutionrelative:web_353502_zgirskaya.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7DBDA764-CF85-488E-A0E1-C0D4B0420C88}|WEB_353502_ZGIRSKAYA.API\\WEB_353502_ZGIRSKAYA.API.csproj|c:\\users\\zgdas\\3rd course\\\u0438\u0441\u043F\\web_353502_zgirskaya\\web_353502_zgirskaya.api\\endpoints\\cocktailendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DBDA764-CF85-488E-A0E1-C0D4B0420C88}|WEB_353502_ZGIRSKAYA.API\\WEB_353502_ZGIRSKAYA.API.csproj|solutionrelative:web_353502_zgirskaya.api\\endpoints\\cocktailendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T14:26:16.133Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:26:11.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T14:24:39.217Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Areas\\Admin\\Pages\\Cocktails\\Index.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:14:17.867Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PagerTagHelper.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\TagHelpers\\PagerTagHelper.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\TagHelpers\\PagerTagHelper.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\TagHelpers\\PagerTagHelper.cs*",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\TagHelpers\\PagerTagHelper.cs*",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAwE0AAABWAAAAAAAAAA==",
+              "Title": "CocktailEndpoints.cs",
+              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.API\\EndPoints\\CocktailEndpoints.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:11:58.407Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CocktailCategory.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.Domain\\Entities\\CocktailCategory.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.Domain\\Entities\\CocktailCategory.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.Domain\\Entities\\CocktailCategory.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.Domain\\Entities\\CocktailCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:03:42.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Program.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Program.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Program.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Program.cs",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAQwMAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:03:25.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CocktailController.cs",
-              "DocumentMoniker": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Controllers\\CocktailController.cs",
-              "RelativeDocumentMoniker": "WEB_353502_ZGIRSKAYA.UI\\Controllers\\CocktailController.cs",
-              "ToolTip": "C:\\Users\\zgdas\\3rd course\\\u0418\u0421\u041F\\WEB_353502_ZGIRSKAYA\\WEB_353502_ZGIRSKAYA.UI\\Controllers\\CocktailController.cs",
-              "RelativeToolTip": "WEB_353502_ZGIRSKAYA.UI\\Controllers\\CocktailController.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAAwNsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T14:02:49.039Z",
+              "WhenOpened": "2025-11-29T14:59:10.936Z",
               "EditorCaption": ""
             }
           ]

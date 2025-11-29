@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.FileProviders;
+using StackExchange.Redis;
 using WEB_353502_ZGIRSKAYA.API.Data;
 using WEB_353502_ZGIRSKAYA.API.EndPoints;
-using WEB_353502_ZGIRSKAYA.API.Models; // Добавленная строка
+using WEB_353502_ZGIRSKAYA.API.Models;
 
 namespace WEB_353502_ZGIRSKAYA.API
 {
@@ -18,6 +20,16 @@ namespace WEB_353502_ZGIRSKAYA.API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Конфигурация Redis ПЕРВОЙ
+            builder.Services.AddStackExchangeRedisCache(opt =>
+            {
+                opt.InstanceName = "labs_";
+                opt.Configuration = builder.Configuration.GetConnectionString("Redis");
+            });
+
+            // Добавьте кэширование ПОСЛЕ настройки Redis
+            builder.Services.AddHybridCache();
 
             var authServer = builder.Configuration
                 .GetSection("AuthServer")

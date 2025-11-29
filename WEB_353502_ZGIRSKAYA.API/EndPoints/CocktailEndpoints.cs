@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Hybrid;
 using System.Text.Json;
 using WEB_353502_ZGIRSKAYA.API.Data;
 using WEB_353502_ZGIRSKAYA.API.UseCases;
@@ -20,10 +21,18 @@ public static class CocktailEndpoints
             .RequireAuthorization("admin");
 
         group.MapGet("/{category:alpha?}",
-            async (IMediator mediator, string? category, int pageNo = 1, int pageSize = 3) =>
+            async (IMediator mediator, HybridCache cache, string? category, int pageNo = 1, int pageSize = 3) =>
             {
-                var response = await mediator.Send(new GetListOfCocktails(category, pageNo, pageSize));
-                return response.Successfull ? Results.Ok(response) : Results.BadRequest(response);
+                var data = await cache.GetOrCreateAsync(
+                    $"cocktails_{category ?? "all"}_{pageNo}_{pageSize}",
+                    async token => await mediator.Send(new GetListOfCocktails(category, pageNo, pageSize)),
+                    options: new HybridCacheEntryOptions
+                    {
+                        Expiration = TimeSpan.FromMinutes(1),
+                        LocalCacheExpiration = TimeSpan.FromSeconds(30)
+                    }
+                );
+                return data.Successfull ? Results.Ok(data) : Results.BadRequest(data);
             })
             .WithName("GetAllCocktails")
             .WithOpenApi()
