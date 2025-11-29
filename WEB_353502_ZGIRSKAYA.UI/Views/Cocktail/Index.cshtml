@@ -2,13 +2,7 @@
 
 @{
     ViewData["Title"] = "Cocktails Catalog";
-    var request = ViewContext.HttpContext.Request;
-    var returnUrl = request.Path + request.QueryString.ToUriComponent();
-
     var currentCategory = ViewData["CurrentCategory"]?.ToString();
-
-    int prev = Model.CurrentPage == 1 ? 1 : Model.CurrentPage - 1;
-    int next = Model.CurrentPage == Model.TotalPages ? Model.TotalPages : Model.CurrentPage + 1;
 }
 
 <div class="container">
@@ -17,41 +11,41 @@
     <div class="row">
         <!-- Блок выбора категории -->
         <div class="col-md-3">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cocktail categories
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a class="nav-link @(string.IsNullOrEmpty(currentCategory) ? "active" : "")"
-                               asp-controller="Cocktail"
-                               asp-route-category=""
-                               asp-route-pageNo="1">
-                                All cocktails
-                            </a>
-                        </li>
-                        @if (ViewData["Categories"] != null)
-                        {
-                            @foreach (var category in ViewData["Categories"] as IEnumerable<CocktailCategory>)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link @(currentCategory == category.NormilisedName ? "active" : "")"
-                                       asp-controller="Cocktail"
-                                       asp-route-category="@category.NormilisedName"
-                                       asp-route-pageNo="1">
-                                        @category.Name
-                                    </a>
-                                </li>
-                            }
-                        }
-                        else
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cocktail categories
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="nav-item">
+                        <a class="nav-link @(string.IsNullOrEmpty(currentCategory) ? "active" : "")"
+                           asp-controller="Cocktail"
+                           asp-route-category=""
+                           asp-route-pageNo="1">
+                            All cocktails
+                        </a>
+                    </li>
+                    @if (ViewData["Categories"] != null)
+                    {
+                        @foreach (var category in ViewData["Categories"] as IEnumerable<CocktailCategory>)
                         {
                             <li class="nav-item">
-                                <span class="nav-link text-muted">Категории не загружены</span>
+                                <a class="nav-link @(currentCategory == category.NormilisedName ? "active" : "")"
+                                   asp-controller="Cocktail"
+                                   asp-route-category="@category.NormilisedName"
+                                   asp-route-pageNo="1">
+                                    @category.Name
+                                </a>
                             </li>
                         }
-                    </ul>
-                </div>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link text-muted">Категории не загружены</span>
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
 
         <div class="col-md-9">
@@ -65,94 +59,85 @@
                 <div class="alert alert-success">@TempData["Success"]</div>
             }
 
-            @if (Model.Items.Any())
-            {
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    @foreach (var item in Model.Items)
-                    {
-                        <div class="col">
-                            <div class="card h-100">
-                                @if (!string.IsNullOrEmpty(item.PathToPicture))
-                                {
-                                    <img src="@item.PathToPicture"
-                                         class="card-img-top"
-                                         alt="@item.Name"
-                                         style="height: 200px; object-fit: cover;"
-                                         onerror="this.onerror=null; this.src='https://localhost:7002/Images/noimage.jpg';">
-                                }
-                                else
-                                {
-                                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
-                                        <span class="text-white">No image</span>
-                                    </div>
-                                }
-
-                                <div class="card-body">
-                                    <h5 class="card-title">@item.Name</h5>
-                                    <p class="card-text text-muted">@item.Description</p>
-                                    <p class="text-muted small">Category: @(item.Category?.Name ?? "No category")</p>
-                                </div>
-
-                                <div class="card-footer bg-white">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="h5 mb-0 text-primary">@item.Price.ToString("C")</span>
-                                        <a href="@Url.Action("Add", "Cart", new { id = item.Id, returnUrl = returnUrl })"
-                                           class="btn btn-success btn-sm"
-                                           title="Add @item.Name to cart">
-                                            <i class="fas fa-cart-plus"></i> Add to cart
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <!-- Пагинация -->
-                @if (Model.TotalPages > 1)
-                {
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-controller="Cocktail"
-                                   asp-route-category="@currentCategory"
-                                   asp-route-pageNo="@prev">
-                                    Previous
-                                </a>
-                            </li>
-
-                            @for (int i = 1; i <= Model.TotalPages; i++)
-                            {
-                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                                    <a class="page-link"
-                                       asp-controller="Cocktail"
-                                       asp-route-category="@currentCategory"
-                                       asp-route-pageNo="@i">
-                                        @i
-                                    </a>
-                                </li>
-                            }
-
-                            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-controller="Cocktail"
-                                   asp-route-category="@currentCategory"
-                                   asp-route-pageNo="@next">
-                                    Next
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                }
-            }
-            else
-            {
-                <div class="alert alert-info">
-                    <h4>No cocktails found</h4>
-                    <p>There are no cocktails available@(!string.IsNullOrEmpty(currentCategory) ? " in this category" : "").</p>
-                </div>
-            }
+            <!-- Контейнер для динамической загрузки контента -->
+            <div id="cocktail-content">
+                <partial name="_CocktailListPartial" model="Model" />
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Функция для загрузки контента через AJAX
+            function loadCocktails(url) {
+                // Показываем индикатор загрузки
+                $('#cocktail-content').html(`
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading cocktails...</p>
+                    </div>
+                `);
+
+                // Отправляем AJAX запрос
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    success: function (data) {
+                        $('#cocktail-content').html(data);
+                        // Обновляем URL в браузере без перезагрузки страницы
+                        history.pushState(null, '', url);
+                    },
+                    error: function (xhr, status, error) {
+                        $('#cocktail-content').html(`
+                            <div class="alert alert-danger">
+                                <h4>Error loading content</h4>
+                                <p>Please try again later.</p>
+                                <p>Error: ${error}</p>
+                            </div>
+                        `);
+                    }
+                });
+            }
+
+            // Обработка кликов по ссылкам пагинации
+            $(document).on('click', '.pagination .page-link:not(.disabled)', function (e) {
+                e.preventDefault();
+
+                var url = $(this).attr('href');
+                if (url && url !== '#') {
+                    loadCocktails(url);
+                }
+            });
+
+            // Обработка кликов по ссылкам категорий
+            $(document).on('click', '.dropdown-menu .nav-link', function (e) {
+                e.preventDefault();
+
+                var url = $(this).attr('href');
+                if (url) {
+                    loadCocktails(url);
+
+                    // Обновляем активную категорию в dropdown
+                    $('.dropdown-menu .nav-link').removeClass('active');
+                    $(this).addClass('active');
+
+                    // Обновляем текст кнопки dropdown
+                    var categoryText = $(this).text().trim();
+                    $('.dropdown-toggle').text(categoryText);
+                }
+            });
+
+            // Обработка кнопок браузера "назад/вперед"
+            $(window).on('popstate', function () {
+                loadCocktails(window.location.href);
+            });
+        });
+    </script>
+}

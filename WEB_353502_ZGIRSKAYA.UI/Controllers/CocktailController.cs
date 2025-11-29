@@ -29,19 +29,39 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
                     return View(new ListModel<Cocktail>());
                 }
 
-                // Исправленная загрузка категорий
-                var categoryResponse = await _categoryService.GetCategoryListAsync();
-                var categories = categoryResponse.Successfull ? categoryResponse.Data : new List<CocktailCategory>();
+                // Проверяем, является ли запрос AJAX
+                bool isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
 
-                ViewData["CurrentCategory"] = category;
-                ViewData["Categories"] = categories; // Убедитесь, что используете тот же ключ, что и в View
-                ViewData["CurrentPage"] = pageNo;
+                if (isAjax)
+                {
+                    // Для AJAX запросов возвращаем только частичное представление
+                    // Передаем необходимые данные через ViewData
+                    ViewData["CurrentCategory"] = category;
+                    return PartialView("_CocktailListPartial", cocktailResponse.Data);
+                }
+                else
+                {
+                    // Для обычных запросов загружаем категории и возвращаем полную страницу
+                    var categoryResponse = await _categoryService.GetCategoryListAsync();
+                    var categories = categoryResponse.Successfull ? categoryResponse.Data : new List<CocktailCategory>();
 
-                return View(cocktailResponse.Data);
+                    ViewData["CurrentCategory"] = category;
+                    ViewData["Categories"] = categories;
+                    ViewData["CurrentPage"] = pageNo;
+
+                    return View(cocktailResponse.Data);
+                }
             }
             catch (Exception ex)
             {
                 TempData["Error"] = $"Ошибка при загрузке данных: {ex.Message}";
+
+                bool isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
+                if (isAjax)
+                {
+                    return PartialView("_CocktailListPartial", new ListModel<Cocktail>());
+                }
+
                 return View(new ListModel<Cocktail>());
             }
         }
