@@ -5,7 +5,7 @@ using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.Domain.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 
-namespace WEB_353502_ZGIRSKAYA.UI.Services.CocktailService
+namespace WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService
 {
     public class MemoryCocktailService : ICocktailService
     {
@@ -95,11 +95,11 @@ namespace WEB_353502_ZGIRSKAYA.UI.Services.CocktailService
         public Task<ResponseData<ListModel<Cocktail>>> GetCocktailListAsync(
             string? categoryNormalizedName, int pageNo = 1)
         {
-            var pageSize = _configuration.GetValue<int>("PageSettings:PageSize", 3);
+            var pageSize = _configuration.GetValue("PageSettings:PageSize", 3);
 
             var filteredCocktails = _cocktails
                 .Where(c => categoryNormalizedName == null ||
-                      (c.Category != null && c.Category.NormilisedName == categoryNormalizedName))
+                      c.Category != null && c.Category.NormilisedName == categoryNormalizedName)
                 .ToList();
 
             var totalPages = (int)Math.Ceiling((double)filteredCocktails.Count / pageSize);

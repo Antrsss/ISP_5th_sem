@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
-using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 using WEB_353502_ZGIRSKAYA.UI.Extensions;
+using WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {

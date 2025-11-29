@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.Domain.Models;
-using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
+using WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Areas.Admin.Pages.Cocktails
 {

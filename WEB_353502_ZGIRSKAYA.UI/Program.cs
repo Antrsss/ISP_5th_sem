@@ -7,8 +7,8 @@ using WEB_353502_ZGIRSKAYA.UI.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services;
 using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
-using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
 using WEB_353502_ZGIRSKAYA.UI.Services.FileService;
+using WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI
 {
@@ -160,6 +160,14 @@ namespace WEB_353502_ZGIRSKAYA.UI
             builder.Services.AddScoped<IFileService, LocalFileService>();
             builder.Services.AddHttpContextAccessor();
 
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromHours(1);
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -176,6 +184,7 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();

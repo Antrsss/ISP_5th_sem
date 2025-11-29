@@ -1,0 +1,66 @@
+﻿@model WEB_353502_ZGIRSKAYA.Domain.Entities.Cart
+
+@{
+    ViewData["Title"] = "Корзина заказов";
+}
+
+<h2>Ваша корзина:</h2>
+
+@if (Model.CartItems.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Коктейль</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems.Values)
+            {
+                <tr>
+                    <td>@item.Cocktail.Name</td>
+                    <td>@item.Cocktail.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@((item.Cocktail.Price * item.Quantity).ToString("C"))</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm"
+                           asp-controller="Cart"
+                           asp-action="Remove"
+                           asp-route-id="@item.Cocktail.Id"
+                           asp-route-returnUrl="@Context.Request.Path">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Итого:</strong></td>
+                <td><strong>@Model.TotalPrice.ToString("C")</strong></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-end">
+        <a class="btn btn-warning" asp-controller="Cart" asp-action="Clear" asp-route-returnUrl="@Context.Request.Path">
+            Очистить корзину
+        </a>
+        <a class="btn btn-success" href="#">
+            Оформить заказ
+        </a>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        Корзина пуста
+    </div>
+}
+
+<div class="mt-3">
+    <a class="btn btn-secondary" asp-controller="Cocktail" asp-action="Index">Продолжить покупки</a>
+</div>

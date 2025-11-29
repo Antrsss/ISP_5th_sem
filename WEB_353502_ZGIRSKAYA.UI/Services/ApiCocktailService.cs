@@ -3,7 +3,7 @@ using System.Text.Json;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.Domain.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
-using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
+using WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Services
 {

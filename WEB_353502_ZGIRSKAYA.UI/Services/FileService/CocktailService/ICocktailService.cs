@@ -1,7 +1,7 @@
 ﻿using WEB_353502_ZGIRSKAYA.Domain.Models;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 
-namespace WEB_353502_ZGIRSKAYA.UI.Services.CocktailService
+namespace WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService
 {
     public interface ICocktailService
     {
