@@ -1,86 +1,47 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
-using WEB_353502_ZGIRSKAYA.UI.Extensions;
 using WEB_353502_ZGIRSKAYA.UI.Services.FileService.CocktailService;
 
-namespace WEB_353502_ZGIRSKAYA.UI.Controllers
+[Authorize]
+public class CartController : Controller
 {
-    [Authorize] // Вернем авторизацию
-    public class CartController : Controller
+    private readonly ICocktailService _cocktailService;
+    private readonly Cart _cart;
+
+    public CartController(ICocktailService cocktailService, Cart cart)
     {
-        private readonly ICocktailService _cocktailService;
+        _cocktailService = cocktailService;
+        _cart = cart;
+    }
 
-        public CartController(ICocktailService cocktailService)
+    [HttpGet]
+    public async Task<IActionResult> Add(int id, string returnUrl)
+    {
+        var response = await _cocktailService.GetCocktailByIdAsync(id);
+        if (response.Successfull && response.Data != null)
         {
-            _cocktailService = cocktailService;
+            _cart.AddToCart(response.Data);
         }
+        return Redirect(returnUrl);
+    }
 
-        public IActionResult Index()
-        {
-            Cart cart = HttpContext.Session.Get<Cart>("cart") ?? new Cart();
-            return View(cart);
-        }
+    [HttpGet]
+    public IActionResult Remove(int id, string returnUrl)
+    {
+        _cart.RemoveItems(id);
+        return Redirect(returnUrl);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> Add(int id, string returnUrl)
-        {
-            // ВРЕМЕННО для отладки
-            System.Diagnostics.Debug.WriteLine($"=== ADD METHOD CALLED: id={id} ===");
+    [HttpGet]
+    public IActionResult Clear(string returnUrl)
+    {
+        _cart.ClearAll();
+        return Redirect(returnUrl);
+    }
 
-            Cart cart = HttpContext.Session.Get<Cart>("cart") ?? new Cart();
-
-            var token = await HttpContext.GetTokenAsync("keycloak", "access_token");
-            System.Diagnostics.Debug.WriteLine($"Token: {token}");
-
-
-            try
-            {
-                var response = await _cocktailService.GetCocktailByIdAsync(id);
-
-                System.Diagnostics.Debug.WriteLine($"API Response - Success: {response.Successfull}");
-                System.Diagnostics.Debug.WriteLine($"API Response - Error: {response.ErrorMessage}");
-                System.Diagnostics.Debug.WriteLine($"API Response - Data: {response.Data != null}");
-
-                if (response.Successfull && response.Data != null)
-                {
-                    cart.AddToCart(response.Data);
-                    HttpContext.Session.Set("cart", cart);
-                    TempData["Success"] = $"{response.Data.Name} добавлен в корзину!";
-                }
-                else
-                {
-                    // Покажем конкретную ошибку
-                    TempData["Error"] = $"Ошибка API: {response.ErrorMessage}";
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
-                TempData["Error"] = $"Исключение: {ex.Message}";
-            }
-
-            return Redirect(returnUrl);
-        }
-
-        [HttpGet]
-        public IActionResult Remove(int id, string returnUrl)
-        {
-            Cart cart = HttpContext.Session.Get<Cart>("cart") ?? new Cart();
-            cart.RemoveItems(id);
-            HttpContext.Session.Set("cart", cart);
-            TempData["Success"] = "Товар удален из корзины";
-
-            return Redirect(returnUrl);
-        }
-
-        [HttpGet]
-        public IActionResult Clear(string returnUrl)
-        {
-            HttpContext.Session.Remove("cart");
-            TempData["Success"] = "Корзина очищена";
-            return Redirect(returnUrl);
-        }
+    public IActionResult Index()
+    {
+        return View(_cart);
     }
 }

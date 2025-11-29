@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
-using WEB_353502_ZGIRSKAYA.UI.Extensions;
 using WEB_353502_ZGIRSKAYA.UI.Models;
 
-namespace WEB_353502_ZGIRSKAYA.UI.Components
+public class CartViewComponent : ViewComponent
 {
-    public class CartViewComponent : ViewComponent
+    private readonly Cart _cart;
+
+    public CartViewComponent(Cart cart)
     {
-        public IViewComponentResult Invoke()
+        _cart = cart;
+    }
+
+    public IViewComponentResult Invoke()
+    {
+        var model = new CartViewModel
         {
-            Cart cart = HttpContext.Session.Get<Cart>("cart");
-
-            var model = new CartViewModel
-            {
-                TotalPrice = cart?.TotalPrice.ToString("C") ?? "0,00 ₽",
-                ItemsCount = cart?.Count ?? 0
-            };
-
-            return View(model);
-        }
+            TotalPrice = _cart.TotalPrice.ToString("C"),
+            ItemsCount = _cart.Count
+        };
+        return View(model);
     }
 }

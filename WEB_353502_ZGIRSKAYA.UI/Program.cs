@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
 using WEB_353502_ZGIRSKAYA.UI.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services;
@@ -167,6 +168,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
                 options.Cookie.IsEssential = true;
                 options.IdleTimeout = TimeSpan.FromHours(1);
             });
+
+            builder.Services.AddScoped<Cart, SessionCart>();
 
             var app = builder.Build();
 
