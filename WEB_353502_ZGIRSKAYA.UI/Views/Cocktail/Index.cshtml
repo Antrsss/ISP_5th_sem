@@ -9,13 +9,16 @@
     <h1>@ViewData["Title"]</h1>
 
     <div class="row">
-        <!-- Блок выбора категории -->
         <div class="col-md-3">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown" id="category-dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="categoryDropdownButton"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     Cocktail categories
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" aria-labelledby="categoryDropdownButton">
                     <li class="nav-item">
                         <a class="nav-link @(string.IsNullOrEmpty(currentCategory) ? "active" : "")"
                            asp-controller="Cocktail"
@@ -41,7 +44,7 @@
                     else
                     {
                         <li class="nav-item">
-                            <span class="nav-link text-muted">Категории не загружены</span>
+                            <span class="nav-link text-muted">Categories not loaded</span>
                         </li>
                     }
                 </ul>
@@ -49,7 +52,6 @@
         </div>
 
         <div class="col-md-9">
-            <!-- Сообщения об ошибках/успехе -->
             @if (TempData["Error"] != null)
             {
                 <div class="alert alert-danger">@TempData["Error"]</div>
@@ -59,85 +61,9 @@
                 <div class="alert alert-success">@TempData["Success"]</div>
             }
 
-            <!-- Контейнер для динамической загрузки контента -->
             <div id="cocktail-content">
                 <partial name="_CocktailListPartial" model="Model" />
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Функция для загрузки контента через AJAX
-            function loadCocktails(url) {
-                // Показываем индикатор загрузки
-                $('#cocktail-content').html(`
-                    <div class="text-center py-5">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <p class="mt-2">Loading cocktails...</p>
-                    </div>
-                `);
-
-                // Отправляем AJAX запрос
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    success: function (data) {
-                        $('#cocktail-content').html(data);
-                        // Обновляем URL в браузере без перезагрузки страницы
-                        history.pushState(null, '', url);
-                    },
-                    error: function (xhr, status, error) {
-                        $('#cocktail-content').html(`
-                            <div class="alert alert-danger">
-                                <h4>Error loading content</h4>
-                                <p>Please try again later.</p>
-                                <p>Error: ${error}</p>
-                            </div>
-                        `);
-                    }
-                });
-            }
-
-            // Обработка кликов по ссылкам пагинации
-            $(document).on('click', '.pagination .page-link:not(.disabled)', function (e) {
-                e.preventDefault();
-
-                var url = $(this).attr('href');
-                if (url && url !== '#') {
-                    loadCocktails(url);
-                }
-            });
-
-            // Обработка кликов по ссылкам категорий
-            $(document).on('click', '.dropdown-menu .nav-link', function (e) {
-                e.preventDefault();
-
-                var url = $(this).attr('href');
-                if (url) {
-                    loadCocktails(url);
-
-                    // Обновляем активную категорию в dropdown
-                    $('.dropdown-menu .nav-link').removeClass('active');
-                    $(this).addClass('active');
-
-                    // Обновляем текст кнопки dropdown
-                    var categoryText = $(this).text().trim();
-                    $('.dropdown-toggle').text(categoryText);
-                }
-            });
-
-            // Обработка кнопок браузера "назад/вперед"
-            $(window).on('popstate', function () {
-                loadCocktails(window.location.href);
-            });
-        });
-    </script>
-}

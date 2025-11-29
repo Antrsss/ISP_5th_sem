@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
-using WEB_353502_ZGIRSKAYA.Domain.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailCategoryService;
 using WEB_353502_ZGIRSKAYA.UI.Services.CocktailService;
-using WEB_353502_ZGIRSKAYA.UI.Extensions; // Добавляем using для расширений
+using WEB_353502_ZGIRSKAYA.UI.Extensions;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {
@@ -20,51 +19,26 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 
         public async Task<IActionResult> Index(string? category, int pageNo = 1)
         {
-            try
+            var response = await _cocktailService.GetCocktailListAsync(category, pageNo);
+            if (!response.Successfull || response.Data == null)
             {
-                var cocktailResponse = await _cocktailService.GetCocktailListAsync(category, pageNo);
-
-                if (!cocktailResponse.Successfull)
-                {
-                    TempData["Error"] = cocktailResponse.ErrorMessage;
-                    return View(new ListModel<Cocktail>());
-                }
-
-                // Используем расширяющий метод для проверки AJAX запроса
-                if (Request.IsAjaxRequest())
-                {
-                    // Для AJAX запросов возвращаем только частичное представление
-                    ViewData["CurrentCategory"] = category;
-                    return PartialView("_CocktailListPartial", cocktailResponse.Data);
-                }
-                else
-                {
-                    // Для обычных запросов загружаем категории и возвращаем полную страницу
-                    var categoryResponse = await _categoryService.GetCategoryListAsync();
-                    var categories = categoryResponse.Successfull ? categoryResponse.Data : new List<CocktailCategory>();
-
-                    ViewData["CurrentCategory"] = category;
-                    ViewData["Categories"] = categories;
-                    ViewData["CurrentPage"] = pageNo;
-
-                    return View(cocktailResponse.Data);
-                }
+                TempData["Error"] = response.ErrorMessage ?? "Ошибка при загрузке коктейлей";
+                return View("Error");
             }
-            catch (Exception ex)
+
+            if (!Request.IsAjaxRequest())
             {
-                TempData["Error"] = $"Ошибка при загрузке данных: {ex.Message}";
-
-                // Используем расширяющий метод и здесь
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_CocktailListPartial", new ListModel<Cocktail>());
-                }
-
-                return View(new ListModel<Cocktail>());
+                var categoriesResponse = await _categoryService.GetCategoryListAsync();
+                if (categoriesResponse.Successfull)
+                    ViewData["Categories"] = categoriesResponse.Data;
             }
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_CocktailListPartial", response.Data);
+
+            return View(response.Data);
         }
 
-        // Остальные методы контроллера остаются без изменений...
         public async Task<IActionResult> Details(int id)
         {
             try

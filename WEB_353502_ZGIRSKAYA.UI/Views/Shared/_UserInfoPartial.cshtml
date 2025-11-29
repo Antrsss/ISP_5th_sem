@@ -1,43 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
-    // Получаем информацию о пользователе из claims
+﻿@{
     var name = User.Claims.FirstOrDefault(c => c.Type.Equals("preferred_username", StringComparison.OrdinalIgnoreCase))?.Value;
     var avatar = User.Claims.FirstOrDefault(c => c.Type.Equals("avatar", StringComparison.OrdinalIgnoreCase))?.Value;
-
-    // Если аватар не найден, используем изображение по умолчанию
     var avatarUrl = !string.IsNullOrEmpty(avatar) ? avatar : "~/images/default-profile-picture.png";
 }
 
 @if (User.Identity.IsAuthenticated)
 {
-    <!-- Пользователь вошел в систему -->
     <div class="d-flex align-items-center ms-auto">
         @await Component.InvokeAsync("Cart")
 
-        <div class="dropdown ms-4 nav-color">
+        <div class="dropdown ms-4" id="user-menu">
             <button class="btn btn-secondary dropdown-toggle"
-                    type="button" id="dropdownMenuButton"
+                    type="button"
+                    id="userDropdownButton"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
+                <img src="@Url.Content(avatarUrl)" width="30" alt="User" class="rounded-circle me-1" />
                 @name
-                <img src="@Url.Content(avatarUrl)" width="30"
-                     alt="User" class="rounded nav-color" />
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userDropdownButton">
                 <li>
-                    <span class="dropdown-item-text">
-                        <img src="@Url.Content(avatarUrl)"
-                             width="50" alt="User" class="rounded" />
-                        @name
-                    </span>
+                    <img src="@Url.Content(avatarUrl)" width="50" alt="User" class="rounded mb-2" />
+                    <div class="fw-bold">@name</div>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li><hr class="dropdown-divider" /></li>
                 <li>
-                    <form class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
-                        <button id="logout" type="submit" class="nav-link btn-link text-dark">
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button id="logout" type="submit" class="dropdown-item text-danger">
                             Logout
                         </button>
                     </form>
