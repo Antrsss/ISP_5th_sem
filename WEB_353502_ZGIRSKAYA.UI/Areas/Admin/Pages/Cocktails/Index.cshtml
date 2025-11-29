@@ -67,6 +67,7 @@ else
     {
         <pager current-page="@Model.CocktailsModel.CurrentPage"
                total-pages="@Model.CocktailsModel.TotalPages"
-               admin="true"></pager>
+               admin="true"
+               category="@Request.Query["category"]"></pager>
     }
 }

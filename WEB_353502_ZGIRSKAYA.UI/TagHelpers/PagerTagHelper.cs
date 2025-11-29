@@ -51,16 +51,16 @@ namespace WEB_353502_ZGIRSKAYA.UI.TagHelpers
             var ulTag = new TagBuilder("ul");
             ulTag.AddCssClass("pagination justify-content-center");
 
-            // Previous button
+            // Previous
             ulTag.InnerHtml.AppendHtml(CreatePageItem("Previous", CurrentPage - 1, CurrentPage == 1, "bi-chevron-left"));
 
-            // Page numbers
+            // Номера страниц
             for (int i = 1; i <= TotalPages; i++)
             {
                 ulTag.InnerHtml.AppendHtml(CreatePageItem(i.ToString(), i, false, null, i == CurrentPage));
             }
 
-            // Next button
+            // Next
             ulTag.InnerHtml.AppendHtml(CreatePageItem("Next", CurrentPage + 1, CurrentPage == TotalPages, "bi-chevron-right"));
 
             output.Content.SetHtmlContent(ulTag);
@@ -70,19 +70,16 @@ namespace WEB_353502_ZGIRSKAYA.UI.TagHelpers
         {
             var liTag = new TagBuilder("li");
             liTag.AddCssClass("page-item");
-
-            if (active)
-                liTag.AddCssClass("active");
-            if (disabled)
-                liTag.AddCssClass("disabled");
+            if (active) liTag.AddCssClass("active");
+            if (disabled) liTag.AddCssClass("disabled");
 
             var aTag = new TagBuilder("a");
             aTag.AddCssClass("page-link");
+            aTag.Attributes.Add("onclick", "window.location=this.href;return false;");
 
             if (!disabled && targetPage >= 1 && targetPage <= TotalPages)
             {
-                var href = GeneratePageUrl(targetPage);
-                aTag.Attributes.Add("href", href);
+                aTag.Attributes.Add("href", GeneratePageUrl(targetPage));
             }
             else
             {
@@ -92,12 +89,10 @@ namespace WEB_353502_ZGIRSKAYA.UI.TagHelpers
             if (text == "Previous" || text == "Next")
             {
                 aTag.Attributes.Add("aria-label", text);
-
                 var spanTag = new TagBuilder("span");
                 spanTag.AddCssClass("bi");
                 spanTag.AddCssClass(iconClass!);
                 spanTag.Attributes.Add("aria-hidden", "true");
-
                 aTag.InnerHtml.AppendHtml(spanTag);
             }
             else
@@ -112,21 +107,19 @@ namespace WEB_353502_ZGIRSKAYA.UI.TagHelpers
         private string GeneratePageUrl(int pageNumber)
         {
             var httpContext = _httpContextAccessor.HttpContext;
-            if (httpContext == null)
-                return "#";
+            if (httpContext == null) return "#";
 
             var routeValues = new RouteValueDictionary
             {
-                ["pageNo"] = pageNumber
+                ["pageNo"] = pageNumber,
+                ["area"] = "Admin" // ✅ обязательно указываем Area
             };
 
             if (!string.IsNullOrEmpty(Category))
-            {
                 routeValues["category"] = Category;
-            }
 
-            // Для Razor Pages всегда используем GetPathByPage
-            var pagePath = ViewContext.RouteData.Values["page"]?.ToString();
+            string pagePath = "/Cocktails/Index"; // путь относительно Pages
+
             return _linkGenerator.GetPathByPage(
                 httpContext: httpContext,
                 page: pagePath,

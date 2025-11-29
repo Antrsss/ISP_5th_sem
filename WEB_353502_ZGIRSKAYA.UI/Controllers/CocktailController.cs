@@ -6,6 +6,7 @@ using WEB_353502_ZGIRSKAYA.UI.Extensions;
 
 namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 {
+    [Route("Catalog")]
     public class CocktailController : Controller
     {
         private readonly ICocktailService _cocktailService;
@@ -17,6 +18,8 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             _categoryService = categoryService;
         }
 
+        [Route("")]
+        [Route("{category?}/{pageNo:int?}")]
         public async Task<IActionResult> Index(string? category, int pageNo = 1)
         {
             var response = await _cocktailService.GetCocktailListAsync(category, pageNo);
@@ -39,6 +42,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             return View(response.Data);
         }
 
+        [Route("Details/{id}")]
         public async Task<IActionResult> Details(int id)
         {
             try
@@ -60,6 +64,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             }
         }
 
+        [Route("Edit/{id}")]
         public async Task<IActionResult> Edit(int id)
         {
             try
@@ -84,6 +89,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Edit/{id}")]
         public async Task<IActionResult> Edit(int id, Cocktail model, IFormFile? imageFile)
         {
             try
@@ -107,6 +113,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             }
         }
 
+        [Route("Create")]
         public IActionResult Create()
         {
             try
@@ -123,6 +130,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Create")]
         public async Task<IActionResult> Create(Cocktail model, IFormFile? imageFile)
         {
             try
@@ -153,6 +161,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
             }
         }
 
+        [Route("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -177,6 +186,7 @@ namespace WEB_353502_ZGIRSKAYA.UI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
+        [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
