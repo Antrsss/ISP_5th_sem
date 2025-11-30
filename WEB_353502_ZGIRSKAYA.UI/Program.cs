@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Serilog;
 using WEB_353502_ZGIRSKAYA.Domain.Entities;
 using WEB_353502_ZGIRSKAYA.UI.HelperClasses;
+using WEB_353502_ZGIRSKAYA.UI.Middleware;
 using WEB_353502_ZGIRSKAYA.UI.Models;
 using WEB_353502_ZGIRSKAYA.UI.Services;
 using WEB_353502_ZGIRSKAYA.UI.Services.Authentication;
@@ -18,6 +20,12 @@ namespace WEB_353502_ZGIRSKAYA.UI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog((context, services, configuration) =>
+                configuration
+                    .ReadFrom.Configuration(context.Configuration)
+                    .ReadFrom.Services(services)
+                    .Enrich.FromLogContext());
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -188,6 +196,8 @@ namespace WEB_353502_ZGIRSKAYA.UI
             app.UseStaticFiles();
             app.UseRouting();
             app.UseSession();
+
+            app.UseMiddleware<ErrorLoggingMiddleware>();
 
             app.UseAuthentication();
             app.UseAuthorization();
