@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "WEB_353502_ZGIRSKAYA.BlazorWasm",
   "resources": {
-    "hash": "sha256-vspaP5HB5ppHOv1004/znsvFT5BQxPqFHobULJoY7YY=",
+    "hash": "sha256-vl1uYyJ4P/6fUJ6zTl0WGv22UWuUQ9IoRZHSr3PNIVU=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-O/NCYcAN9uPocD7ns7AzF/cqx7f5vL1PTJCQs0vEXyk="
     },
@@ -217,10 +217,10 @@
       "mscorlib.wasm": "sha256-RLW/7NVuhoPfq151II3kX2kWHgBwQgpCw9aemQNg3to=",
       "netstandard.wasm": "sha256-lAg5WvTiA8wbsIwlr51xh0YWpXT9F5EX3Cnv+11O/mU=",
       "System.Private.CoreLib.wasm": "sha256-3O3muuRQwoLRecYRjfIFWUURvTjP4EmD2O8wYg2UDNY=",
-      "WEB_353502_ZGIRSKAYA.BlazorWasm.wasm": "sha256-sUoffsLMPPxBZwgI6hZyiX/pimc8V09CIfK4odtUlPU="
+      "WEB_353502_ZGIRSKAYA.BlazorWasm.wasm": "sha256-bE3WBOgL2+RT1IxVoZuRhmX3z07+Wwwk203x6AwdX0s="
     },
     "pdb": {
-      "WEB_353502_ZGIRSKAYA.BlazorWasm.pdb": "sha256-VJSq8FAVHTLR7bOHEOnSPZEGP/3SYAWZ5j34hA3BHuk="
+      "WEB_353502_ZGIRSKAYA.BlazorWasm.pdb": "sha256-gCnfOZ1VjLBFxM/YLyGQb+dS31NcOSGzSSAfLxoUcBo="
     }
   },
   "cacheBootResources": true,

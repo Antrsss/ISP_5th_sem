@@ -1074,6 +1074,6 @@ C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.Blazo
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\webcil\Microsoft.Net.Http.Headers.wasm
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\5ucqx4vkgt-5i3ys70tdr.gz
 C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\xfe0un12dp-iwlvl8ysqx.gz
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\b0wjcif4yp-p2x1tgv2dk.gz
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\ptez4ykeqy-kipiqomccn.gz
-C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\j0slfkjauw-lg3glv7s6h.gz
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\b0wjcif4yp-0j81wr4r9r.gz
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\ptez4ykeqy-wc7515m1be.gz
+C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.BlazorWasm\obj\Debug\net8.0\compressed\j0slfkjauw-3ezeyivy0l.gz

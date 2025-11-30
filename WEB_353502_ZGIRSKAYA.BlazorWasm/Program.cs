@@ -26,16 +26,7 @@ namespace WEB_353502_ZGIRSKAYA.BlazorWasm
 
             builder.Services.AddOidcAuthentication(options =>
             {
-                options.ProviderOptions.Authority = "http://localhost:8080/realms/zgirskaya";
-                options.ProviderOptions.ClientId = "WebAssemblyClient";
-                options.ProviderOptions.RedirectUri = "https://localhost:7257/authentication/login-callback";
-                options.ProviderOptions.PostLogoutRedirectUri = "https://localhost:7257/authentication/logout-callback";
-                options.ProviderOptions.ResponseType = "code";
-
-                options.ProviderOptions.DefaultScopes.Add("openid");
-                options.ProviderOptions.DefaultScopes.Add("profile");
-                options.ProviderOptions.DefaultScopes.Add("email");
-
+                builder.Configuration.Bind("Keycloak", options.ProviderOptions);
                 options.UserOptions.NameClaim = "preferred_username";
             });
 
