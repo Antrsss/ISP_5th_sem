@@ -1,0 +1,35 @@
+﻿@page "/menu"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+@using WEB_353502_ZGIRSKAYA.BlazorWasm.Components
+@inject IDataService DataService
+
+<h3>Меню дня</h3>
+
+<CategorySelector />
+<CocktailList CocktailSelected="OnCocktailSelected" />
+<Pager />
+<CocktailDetails SelectedCocktail="selectedCocktail" OnClose="OnCloseDetails" />
+
+@code {
+    private CocktailDetailsDto? selectedCocktail;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await DataService.GetCategoryListAsync();
+        await DataService.GetProductListAsync(1);
+    }
+
+    private async void OnCocktailSelected(int cocktailId)
+    {
+        selectedCocktail = await DataService.GetCocktailDetailsAsync(cocktailId);
+        StateHasChanged();
+    }
+
+    private void OnCloseDetails()
+    {
+        selectedCocktail = null;
+        StateHasChanged();
+    }
+}

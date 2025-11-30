@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
+using WEB_353502_ZGIRSKAYA.BlazorWasm.Services;
 
 namespace WEB_353502_ZGIRSKAYA.BlazorWasm
 {
@@ -12,10 +15,14 @@ namespace WEB_353502_ZGIRSKAYA.BlazorWasm
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
+            // HttpClient дл€ API
             builder.Services.AddScoped(sp => new HttpClient
             {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+                BaseAddress = new Uri("https://localhost:7002/")
             });
+
+            // –егистраци€ сервиса данных с зависимостью от IAccessTokenProvider
+            builder.Services.AddScoped<IDataService, DataService>();
 
             builder.Services.AddOidcAuthentication(options =>
             {
@@ -23,7 +30,7 @@ namespace WEB_353502_ZGIRSKAYA.BlazorWasm
                 options.ProviderOptions.ClientId = "WebAssemblyClient";
                 options.ProviderOptions.RedirectUri = "https://localhost:7257/authentication/login-callback";
                 options.ProviderOptions.PostLogoutRedirectUri = "https://localhost:7257/authentication/logout-callback";
-                options.ProviderOptions.ResponseType = "id_token";
+                options.ProviderOptions.ResponseType = "code";
 
                 options.ProviderOptions.DefaultScopes.Add("openid");
                 options.ProviderOptions.DefaultScopes.Add("profile");

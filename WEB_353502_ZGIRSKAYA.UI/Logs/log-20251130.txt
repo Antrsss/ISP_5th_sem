@@ -65,3 +65,142 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2025-11-30 16:22:19.561 +03:00 [INF] ---> request /signin-oidc returns 302
 2025-11-30 16:22:25.281 +03:00 [INF] ---> request /Admin returns 302
 2025-11-30 16:22:25.293 +03:00 [INF] ---> request /Account/AccessDenied?ReturnUrl=%2FAdmin returns 404
+2025-11-30 22:47:28.721 +03:00 [INF] Now listening on: https://localhost:7001
+2025-11-30 22:47:28.834 +03:00 [INF] Now listening on: http://localhost:5052
+2025-11-30 22:47:29.030 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-30 22:47:29.035 +03:00 [INF] Hosting environment: Development
+2025-11-30 22:47:29.043 +03:00 [INF] Content root path: C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI
+2025-11-30 22:49:30.196 +03:00 [INF] Now listening on: https://localhost:7001
+2025-11-30 22:49:30.319 +03:00 [INF] Now listening on: http://localhost:5052
+2025-11-30 22:49:30.531 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-30 22:49:30.534 +03:00 [INF] Hosting environment: Development
+2025-11-30 22:49:30.537 +03:00 [INF] Content root path: C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI
+2025-11-30 23:15:51.351 +03:00 [INF] Now listening on: https://localhost:7001
+2025-11-30 23:15:51.390 +03:00 [INF] Now listening on: http://localhost:5052
+2025-11-30 23:15:51.438 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-30 23:15:51.441 +03:00 [INF] Hosting environment: Development
+2025-11-30 23:15:51.441 +03:00 [INF] Content root path: C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI
+2025-11-30 23:15:56.758 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AspNetCoreGeneratedDocument.Views_Shared_Error.ExecuteAsync() in C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\Views\Shared\Error.cshtml:line 9
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WEB_353502_ZGIRSKAYA.UI.Middleware.ErrorLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\zgdas\3rd course\ИСП\WEB_353502_ZGIRSKAYA\WEB_353502_ZGIRSKAYA.UI\Middleware\ErrorLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-11-30 23:16:00.453 +03:00 [INF] ---> request /Account/Login returns 302
+2025-11-30 23:16:01.145 +03:00 [INF] ---> request /signin-oidc returns 302
+2025-11-30 23:16:01.218 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:01.408 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:08.497 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:08.532 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:10.055 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:16:10.798 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:16:14.217 +03:00 [INF] ---> request /Cart/Add/18?returnUrl=%2FCatalog%3FpageNo%3D1%26ajax%3D1 returns 302
+2025-11-30 23:16:14.232 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:16:14.233 +03:00 [WRN] Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2025-11-30 23:16:18.202 +03:00 [INF] ---> request /Cart/Add/1?returnUrl=%2FCatalog%3FpageNo%3D1%26ajax%3D1 returns 302
+2025-11-30 23:16:18.212 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:16:18.213 +03:00 [WRN] Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2025-11-30 23:16:22.776 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:22.810 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:24.573 +03:00 [INF] ---> request /Cart/Remove/18?returnUrl=%2FCart returns 302
+2025-11-30 23:16:24.617 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:24.674 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:25.501 +03:00 [INF] ---> request /Cart/Clear?returnUrl=%2FCart returns 302
+2025-11-30 23:16:25.540 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:25.568 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:26.576 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:26.603 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:27.556 +03:00 [INF] ---> request /Cart/Add/4?returnUrl=%2FCatalog returns 302
+2025-11-30 23:16:27.605 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:27.644 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:29.359 +03:00 [INF] ---> request /Cart/Add/4?returnUrl=%2FCatalog returns 302
+2025-11-30 23:16:29.403 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:29.434 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:30.085 +03:00 [INF] ---> request /Cart/Add/4?returnUrl=%2FCatalog returns 302
+2025-11-30 23:16:30.130 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:30.155 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:35.094 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:35.128 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:51.307 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:51.363 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:54.188 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:16:54.224 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:09.475 +03:00 [INF] ---> request /Admin/Cocktails/Edit?id=18 returns 302
+2025-11-30 23:17:09.534 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:09.579 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:13.205 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:13.234 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:16.335 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:16.379 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:20.800 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:20.838 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:46.518 +03:00 [INF] ---> request /Admin/Cocktails/Create returns 302
+2025-11-30 23:17:46.569 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:46.604 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:48.253 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:48.286 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:49.881 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:49.914 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:51.270 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:51.301 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:52.415 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:52.456 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:53.926 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:17:53.980 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:03.678 +03:00 [INF] ---> request /Account/Logout returns 302
+2025-11-30 23:18:05.357 +03:00 [INF] ---> request /signout-callback-oidc?state=CfDJ8B6FnFsCYSlMk6l8UWBpK-9z9NDh5Z43osTI8AszHDG-OYKYzrNxpiU4CExG5ccGl9uChPOoW_RJi3zJ66imW5l3PLUpiK_DSf6ouJtfJ_GDpRIT5yFs8MBv6C4Y2qtUccG-yltfjK8I5m3CnPFh-4s returns 302
+2025-11-30 23:18:08.587 +03:00 [INF] ---> request /Account/Login returns 302
+2025-11-30 23:18:13.226 +03:00 [INF] ---> request /signin-oidc returns 302
+2025-11-30 23:18:15.031 +03:00 [INF] ---> request /Admin returns 302
+2025-11-30 23:18:15.039 +03:00 [INF] ---> request /Account/AccessDenied?ReturnUrl=%2FAdmin returns 404
+2025-11-30 23:18:20.135 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:18:27.967 +03:00 [INF] ---> request /Account/Logout returns 302
+2025-11-30 23:18:28.047 +03:00 [INF] ---> request /signout-callback-oidc?state=CfDJ8B6FnFsCYSlMk6l8UWBpK-9NKx1HsQhATzh7SRVk8yFX3gaDkL7gtgpf8dR6euCtXTi9qQfCmpsFM2DXrF2eoYmWJp8CT4ALbubrLXC8IT2BrVHh_B79OKNEcAA75FLTC_DxeifreDXLnn20240JJCY returns 302
+2025-11-30 23:18:31.492 +03:00 [INF] ---> request /Account/Login returns 302
+2025-11-30 23:18:37.361 +03:00 [INF] ---> request /signin-oidc returns 302
+2025-11-30 23:18:37.404 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:37.612 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:39.556 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:39.584 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:41.312 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-11-30 23:18:43.775 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:43.808 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:44.769 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:44.798 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:46.451 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:46.476 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:48.558 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:48.588 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:49.750 +03:00 [INF] ---> request /Admin/Cocktails/Delete?id=24 returns 302
+2025-11-30 23:18:49.800 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:18:49.831 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:19:23.106 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:19:23.147 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:19:51.439 +03:00 [INF] ---> request /Admin/Cocktails/Create returns 302
+2025-11-30 23:19:51.490 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:19:51.519 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:20:00.210 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404
+2025-11-30 23:20:00.241 +03:00 [INF] ---> request /images/default-profile-picture.png returns 404

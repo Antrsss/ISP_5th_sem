@@ -60,9 +60,24 @@ namespace WEB_353502_ZGIRSKAYA.API
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
+            // Добавьте это в конфигурацию сервисов
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowBlazorClient", policy =>
+                {
+                    policy.WithOrigins("https://localhost:7257") // URL вашего Blazor приложения
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // И это в конвейер обработки запросов (перед UseAuthorization)
+            app.UseCors("AllowBlazorClient");
+
+            // Configure the HTTP request pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
