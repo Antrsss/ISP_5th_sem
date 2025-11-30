@@ -1,0 +1,90 @@
+﻿@page "/counter"
+@page "/counter/{InitialCount:int}"
+@rendermode InteractiveServer
+@using WEB_353502_ZGIRSKAYA.Blazor.SSR.Models
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.WebUtilities
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<hr />
+
+<h3>Установить значение счетчика</h3>
+
+<EditForm Model="@counterModel" OnValidSubmit="SetCounterValue">
+    <DataAnnotationsValidator />
+
+    <div class="form-group mb-3">
+        <label for="countInput" class="form-label">Введите значение (1-10):</label>
+        <InputNumber @bind-Value="counterModel.CountValue"
+                     class="form-control"
+                     id="countInput" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Установить</button>
+
+    <ValidationSummary class="text-danger mt-3" />
+</EditForm>
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success mt-3">
+        @successMessage
+    </div>
+}
+
+@code {
+    private int currentCount = 0;
+    private CounterModel counterModel = new CounterModel();
+    private string successMessage = "";
+
+    [Parameter]
+    public int InitialCount { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (InitialCount > 0)
+        {
+            currentCount = InitialCount;
+            successMessage = $"Счетчик установлен на начальное значение: {InitialCount}";
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("count", out var countValues))
+        {
+            if (int.TryParse(countValues.FirstOrDefault(), out int count) && count >= 1 && count <= 10)
+            {
+                currentCount = count;
+                successMessage = $"Счетчик установлен на значение из URL: {count}";
+            }
+        }
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        successMessage = "";
+    }
+
+    private void SetCounterValue()
+    {
+        currentCount = counterModel.CountValue;
+        successMessage = $"Счетчик установлен на значение: {currentCount}";
+
+        counterModel = new CounterModel();
+    }
+
+    private void SetInitialCount(int count)
+    {
+        NavigationManager.NavigateTo($"/counter/{count}");
+    }
+}

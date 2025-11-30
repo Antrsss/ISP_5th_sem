@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WEB_353502_ZGIRSKAYA.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c60cf5d1c765ac9ab0bcd1739e80c87d3bf51fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd135d583986b228fd2d1a0f451de3ede71bbbe2")]
 [assembly: System.Reflection.AssemblyProductAttribute("WEB_353502_ZGIRSKAYA.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WEB_353502_ZGIRSKAYA.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
